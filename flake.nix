@@ -28,6 +28,7 @@
             version = "1";
             paths = with pkgs; [
                 eza
+                jujutsu
                 nix
                 uv
 
