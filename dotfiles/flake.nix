@@ -20,6 +20,7 @@
 
           installPhase = ''
             mkdir -p $out/usr/config/zsh
+            mkdir -p $out/usr/config/jj
             mkdir -p $out/bin
 
             # zsh
@@ -30,6 +31,9 @@
 
             ln -s ${zshBin}/bin/zsh $out/bin/zsh
             ln -s ${starshipBin}/bin/starship $out/bin/starship
+
+            # jujutsu
+            cp jujutsu/config.toml $out/usr/config/jj/config.toml
           '';
         };
       }
