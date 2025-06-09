@@ -25,7 +25,7 @@
       in {
         packages.default = pkgs.buildEnv {
             name = "home";
-            version = "1";
+            version = "2";
             paths = with pkgs; [
                 eza
                 jujutsu

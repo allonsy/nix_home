@@ -17,3 +17,4 @@ disabled = true
 [directory]
 truncation_length = 0
 style = 'fg:red'
+truncate_to_repo = false
