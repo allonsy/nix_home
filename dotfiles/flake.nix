@@ -10,27 +10,23 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        starshipBin = pkgs.starship;
-        zshBin = pkgs.zsh;
       in {
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "home_dotfiles";
-          version = "1";
+          version = "2";
           src = ./.;
 
           installPhase = ''
             mkdir -p $out/usr/config/zsh
             mkdir -p $out/usr/config/jj
-            mkdir -p $out/bin
+            mkdir -p $out/usr/config/starship
 
             # zsh
             cp zsh/zshrc $out/usr/config/zsh
             cp zsh/zprofile $out/usr/config/zsh
             cp zsh/aliases.zsh $out/usr/config/zsh
             cp zsh/env_vars.zsh $out/usr/config/zsh
-
-            ln -s ${zshBin}/bin/zsh $out/bin/zsh
-            ln -s ${starshipBin}/bin/starship $out/bin/starship
+            cp zsh/starship.toml $out/usr/config/starship/config.toml
 
             # jujutsu
             cp jujutsu/config.toml $out/usr/config/jj/config.toml

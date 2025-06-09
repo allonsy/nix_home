@@ -30,7 +30,9 @@
                 eza
                 jujutsu
                 nix
+                starship
                 uv
+                zsh
 
                 # custom packages
                 dotfiles.packages.${system}.default

@@ -15,7 +15,6 @@ compinit
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
-PROMPT='[%F{red}%n%f: %F{blue}%~%f]
-%F{yellow}>>>%f '
-
 source ~/.nix-profile/usr/config/zsh/aliases.zsh
+
+eval "$(starship init zsh)"
