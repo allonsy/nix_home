@@ -16,19 +16,23 @@
           src = ./.;
 
           installPhase = ''
-            mkdir -p $out/usr/config/zsh
-            mkdir -p $out/usr/config/jj
-            mkdir -p $out/usr/config/starship
-
             # zsh
-            cp zsh/zshrc $out/usr/config/zsh
-            cp zsh/zprofile $out/usr/config/zsh
-            cp zsh/aliases.zsh $out/usr/config/zsh
-            cp zsh/env_vars.zsh $out/usr/config/zsh
+            mkdir -p $out/usr/config/zsh
+            mkdir -p $out/usr/config/starship
+            cp zsh/* $out/usr/config/zsh
             cp zsh/starship.toml $out/usr/config/starship/config.toml
 
             # jujutsu
+            mkdir -p $out/usr/config/jj
             cp jujutsu/config.toml $out/usr/config/jj/config.toml
+
+            # nix
+            mkdir -p $out/usr/config/nix
+            cp nix/nix.conf $out/usr/config/nix
+
+            # kitty
+            mkdir -p $out/usr/config/kitty
+            cp kitty/* $out/usr/config/kitty
           '';
         };
       }
