@@ -13,6 +13,9 @@ error_symbol = "[>>>](bold red)"
 [python]
 format = '[py:$virtualenv]($style)'
 
+[cmd_duration]
+disabled = true
+
 [package]
 disabled = true
 
