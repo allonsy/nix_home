@@ -3,11 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixGL.url = "github:nix-community/nixGL";
-    nixGL.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixGL }:
+  outputs = { self, nixpkgs }:
     let
       systems = import ./systems.nix;
     in
@@ -26,8 +24,8 @@
               starship
               uv
               zsh
+              mesa
               kitty
-              nixGL.packages.${system}.nixGLIntel
 
               # custom packages
               dotfiles

@@ -1,7 +1,8 @@
-{
+rec {
+  linuxSystemName = "x86_64-linux";
   forEachSystem = builder: let
     systems = [
-      "x86_64-linux"
+      linuxSystemName
     ];
     systemMapper = systemName: { packages.${systemName}.default = (builder systemName).packages.default; };
     aggregator = acc: newElem: acc // (systemMapper newElem);
