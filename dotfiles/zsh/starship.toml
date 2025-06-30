@@ -4,12 +4,14 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
+right_format = "${custom.jj}"
 
-# Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
+[character]
 success_symbol = '[>>>](bold yellow)'
 error_symbol = "[>>>](bold red)"
 
+[python]
+format = '[py:$virtualenv]($style)'
 
 [package]
 disabled = true
@@ -18,3 +20,7 @@ disabled = true
 truncation_length = 0
 style = 'fg:red'
 truncate_to_repo = false
+
+[custom.jj]
+command = ''' jj log --no-graph -r @ -T 'if(self.empty(), "@", "@*") ++ ": " ++ self.parents().map(|p| if(p.bookmarks().len() > 0, p.bookmarks(), p.change_id().shortest()))' '''
+when = 'jj status'
