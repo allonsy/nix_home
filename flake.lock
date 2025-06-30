@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "dotfiles": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "path": "./dotfiles",
-        "type": "path"
-      },
-      "original": {
-        "path": "./dotfiles",
-        "type": "path"
-      },
-      "parent": []
-    },
     "flake-utils": {
       "locked": {
         "lastModified": 1659877975,
@@ -70,7 +54,6 @@
     },
     "root": {
       "inputs": {
-        "dotfiles": "dotfiles",
         "nixGL": "nixGL",
         "nixpkgs": "nixpkgs"
       }

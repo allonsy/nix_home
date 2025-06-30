@@ -5,22 +5,16 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixGL.url = "github:nix-community/nixGL";
     nixGL.inputs.nixpkgs.follows = "nixpkgs";
-
-    # custom subflakes
-    dotfiles = {
-      url = "path:./dotfiles";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
-  outputs = { self, nixpkgs, dotfiles, nixGL }:
+  outputs = { self, nixpkgs, nixGL }:
     let
       systems = import ./systems.nix;
     in
         systems.forEachSystem (system:
         let
             pkgs = import nixpkgs { inherit system; };
+            dotfiles = (import ./dotfiles/dotfiles.nix).package pkgs system;
         in {
             packages.default = pkgs.buildEnv {
                 name = "home";
@@ -36,7 +30,7 @@
                     nixGL.packages.${system}.nixGLIntel
 
                     # custom packages
-                    dotfiles.packages.${system}.default
+                    dotfiles
                 ];
             };
         }
