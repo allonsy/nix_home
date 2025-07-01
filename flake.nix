@@ -12,7 +12,8 @@
       systems.forEachSystem (system:
         let
           pkgs = import nixpkgs { inherit system; };
-          dotfiles = (import ./dotfiles/dotfiles.nix).package pkgs system;
+          dotfiles = (import ./dotfiles/dotfiles.nix).package pkgs;
+          wrapGL = (import ./wrapGL.nix) pkgs system;
         in {
           packages.default = pkgs.buildEnv {
             name = "home";
@@ -21,11 +22,9 @@
               eza
               jujutsu
               nix
-              starship
               uv
               zsh
-              mesa
-              kitty
+              (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
 
               # custom packages
               dotfiles
