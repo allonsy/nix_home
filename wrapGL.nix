@@ -9,7 +9,7 @@ nixpkgs: system: package: binNames: { extraBins ? [] }:
       pathName = nixpkgs.writeText "wrapperGL-${binName}" ''
         #!${sh}
         ${egl_vendor_base}
-        ${binName} $@
+        ${package}/bin/${binName} $@
       '';
     } else {
       name = binName;
