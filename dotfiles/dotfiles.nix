@@ -12,9 +12,13 @@
           # zsh
           mkdir -p $out/usr/config/zsh
           mkdir -p $out/usr/config/starship
-          cp zsh/* $out/usr/config/zsh
-          cp zsh/starship.toml $out/usr/config/starship/config.toml
+          cp zsh/{zshrc,zprofile} $out/usr/config/zsh
+          echo "source ${./zsh/aliases.zsh}" >> $out/usr/config/zsh/zshrc
           echo "eval \"\$(${starship} init zsh)\"" >> $out/usr/config/zsh/zshrc
+          echo "source ${./zsh/env_vars.zsh}" >> $out/usr/config/zsh/zprofile
+
+          #starship
+          cp starship/starship.toml $out/usr/config/starship/config.toml
 
           # jujutsu
           mkdir -p $out/usr/config/jj

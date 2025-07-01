@@ -14,6 +14,7 @@
           pkgs = import nixpkgs { inherit system; };
           dotfiles = (import ./dotfiles/dotfiles.nix).package pkgs;
           wrapGL = (import ./wrapGL.nix) pkgs system;
+          scripts = (import ./scripts) pkgs;
         in {
           packages.default = pkgs.buildEnv {
             name = "home";
@@ -24,6 +25,7 @@
               nix
               uv
               zsh
+              scripts
               (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
 
               # custom packages
