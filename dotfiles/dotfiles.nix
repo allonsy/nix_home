@@ -4,8 +4,7 @@
       starship = "${nixpkgs.starship}/bin/starship";
     in
       nixpkgs.stdenv.mkDerivation {
-        pname = "home_dotfiles";
-        version = "2";
+        name = "home_dotfiles";
         src = ./.;
 
         installPhase = ''
