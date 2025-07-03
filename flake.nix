@@ -25,6 +25,7 @@
               nix
               uv
               zsh
+              neovim
               atuin
               scripts
               (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
