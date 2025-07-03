@@ -25,6 +25,7 @@
               nix
               uv
               zsh
+              atuin
               scripts
               (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
 
