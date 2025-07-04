@@ -8,17 +8,18 @@
   outputs = { self, nixpkgs }:
     let
       systems = import ./systems.nix;
-    in
-      systems.forEachSystem (system:
+      dotfiles = (import ./dotfiles/dotfiles.nix);
+      scripts = (import ./scripts);
+
+      packageOutput = systems.forEachSystem (system:
         let
           pkgs = import nixpkgs { inherit system; };
-          dotfiles = (import ./dotfiles/dotfiles.nix).package pkgs;
+          dotfilesPkg = dotfiles pkgs;
           wrapGL = (import ./wrapGL.nix) pkgs system;
-          scripts = (import ./scripts) pkgs;
+          scriptsPkg = scripts pkgs;
         in {
           packages.default = pkgs.buildEnv {
             name = "home";
-            version = "2";
             paths = with pkgs; [
               eza
               jujutsu
@@ -27,13 +28,19 @@
               zsh
               neovim
               atuin
-              scripts
               (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
 
               # custom packages
-              dotfiles
+              dotfilesPkg
+              scriptsPkg
             ];
           };
         }
       );
+    in
+      packageOutput // {
+        dotfiles=dotfiles;
+        scripts=scripts;
+      }
+    ;
 }
