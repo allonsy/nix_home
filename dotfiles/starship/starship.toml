@@ -12,7 +12,7 @@ success_symbol = '[>>>](bold yellow)'
 error_symbol = "[>>>](bold red)"
 
 [python]
-format = '[py:$virtualenv]($style)'
+format = '[py:$virtualenv-$version]($style)'
 
 [cmd_duration]
 disabled = true
