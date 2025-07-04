@@ -15,5 +15,10 @@ compinit
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
+# homebrew
+if command -v /opt/homebrew/bin/brew; then
+  eval $(/opt/homebrew/brew shellenv)
+fi
+
 # atuin
 eval "$(atuin init zsh)"
