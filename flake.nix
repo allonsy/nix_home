@@ -14,7 +14,7 @@
       packageOutput = systems.forEachSystem (system:
         let
           pkgs = import nixpkgs { inherit system; };
-          dotfilesPkg = dotfiles pkgs;
+          dotfilesPkg = dotfiles pkgs system;
           wrapGL = (import ./wrapGL.nix) pkgs system;
           scriptsPkg = scripts pkgs;
         in {
