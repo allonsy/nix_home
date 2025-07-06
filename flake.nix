@@ -7,7 +7,7 @@
 
   outputs = { self, nixpkgs }:
     let
-      system = "x86_64-linux";
+      system = "aarch64-darwin";
       pkgs = import nixpkgs { inherit system; };
       dotfiles = (import ./dotfiles/dotfiles.nix) pkgs;
       scripts = (import ./scripts) pkgs;
@@ -23,7 +23,14 @@
               zsh
               neovim
               atuin
-              (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
+              kitty
+
+              #macos packages
+              awscli2
+              python3
+              k9s
+              tgswitch
+              tfswitch
 
               # custom packages
               dotfiles
