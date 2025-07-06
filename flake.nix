@@ -7,18 +7,13 @@
 
   outputs = { self, nixpkgs }:
     let
-      systems = import ./systems.nix;
-      dotfiles = (import ./dotfiles/dotfiles.nix);
-      scripts = (import ./scripts);
-
-      packageOutput = systems.forEachSystem (system:
-        let
-          pkgs = import nixpkgs { inherit system; };
-          dotfilesPkg = dotfiles pkgs system;
-          wrapGL = (import ./wrapGL.nix) pkgs system;
-          scriptsPkg = scripts pkgs;
-        in {
-          packages.default = pkgs.buildEnv {
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+      dotfiles = (import ./dotfiles/dotfiles.nix) pkgs;
+      scripts = (import ./scripts) pkgs;
+      wrapGL = (import ./wrapGL.nix) pkgs;
+    in {
+      packages.${system}.default = pkgs.buildEnv {
             name = "home";
             paths = with pkgs; [
               eza
@@ -31,16 +26,9 @@
               (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
 
               # custom packages
-              dotfilesPkg
-              scriptsPkg
+              dotfiles
+              scripts
             ];
           };
-        }
-      );
-    in
-      packageOutput // {
-        dotfiles=dotfiles;
-        scripts=scripts;
-      }
-    ;
+    };
 }

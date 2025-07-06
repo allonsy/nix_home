@@ -1,19 +1,15 @@
-nixpkgs: system: package: binNames: { extraBins ? [] }:
+nixpkgs: package: binNames: { extraBins ? [] }:
   let
-    shouldWrap = system == (import ./systems.nix).linuxSystemName;
     egl_vendor_base = "export __EGL_VENDOR_LIBRARY_FILENAMES=${nixpkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json";
     sh = "${nixpkgs.bash}/bin/bash";
 
-    wrapperScripts = map (binName: if shouldWrap then {
+    wrapperScripts = map (binName: {
       name = binName;
       pathName = nixpkgs.writeText "wrapperGL-${binName}" ''
         #!${sh}
         ${egl_vendor_base}
         ${package}/bin/${binName} $@
       '';
-    } else {
-      name = binName;
-      pathName = "${package}/bin/${binName}";
     }) binNames;
     extraScripts = map (binName: {
       name=binName;
