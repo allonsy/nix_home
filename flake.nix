@@ -16,18 +16,21 @@
       packages.${system}.default = pkgs.buildEnv {
             name = "home";
             paths = with pkgs; [
+              atuin
+              dotfiles
               eza
+              git
               jujutsu
+              (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
+              neovim
               nix
+              nodejs
+              pnpm
+              python3
+              scripts
               uv
               zsh
-              neovim
-              atuin
-              (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
 
-              # custom packages
-              dotfiles
-              scripts
             ];
           };
     };
