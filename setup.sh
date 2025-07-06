@@ -3,6 +3,7 @@
 # zsh
 ln -sf ~/.nix-profile/usr/config/zsh/zshrc ~/.zshrc
 ln -sf ~/.nix-profile/usr/config/zsh/zprofile ~/.zprofile
+mkdir -p ~/.config
 ln -sf ~/.nix-profile/usr/config/starship/config.toml ~/.config/starship.toml
 
 # jujutsu
