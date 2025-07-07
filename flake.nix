@@ -7,14 +7,13 @@
 
   outputs = { self, nixpkgs }:
     let
-      system = "x86_64-linux";
+      system = "aarch64-darwin";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
       dotfiles = (import ./dotfiles/dotfiles.nix) pkgs;
       scripts = (import ./scripts) pkgs;
-      wrapGL = (import ./wrapGL.nix) pkgs;
     in {
       packages.${system}.default = pkgs.buildEnv {
             name = "home";
@@ -24,7 +23,7 @@
               eza
               git
               jujutsu
-              (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
+              kitty
               neovim
               nix
               nodejs
@@ -35,6 +34,13 @@
               uv
               zsh
 
+              #macos packages
+              awscli2
+              dapr-cli
+              k9s
+              stow
+              tfswitch
+              tgswitch
             ];
           };
     };
