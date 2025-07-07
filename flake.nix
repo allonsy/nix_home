@@ -8,7 +8,10 @@
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       dotfiles = (import ./dotfiles/dotfiles.nix) pkgs;
       scripts = (import ./scripts) pkgs;
       wrapGL = (import ./wrapGL.nix) pkgs;
@@ -27,6 +30,7 @@
               nodejs
               pnpm
               python3
+              rustup
               scripts
               uv
               zsh
