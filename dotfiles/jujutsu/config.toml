@@ -13,6 +13,8 @@ push = ["git", "push"]
 pull = ["git", "fetch"]
 fork = ["new", "--after", "trunk()", "--before", "@", "--no-edit"]
 clean = ["new", "all:bookmarks() & mine()"]
+ll = ["log", "-r", "(immutable_heads()..mine()):: | immutable_heads()"]
+la = ["log", "-r", "::"]
 
 [git]
 push-new-bookmarks = true
@@ -23,3 +25,6 @@ push-bookmark-prefix = "alec/"
 program = "pycharm"
 merge-args = ["merge", "$left", "$right", "$base", "$output"]
 edit-args = ["diff", "$left", "$right"]
+
+[revsets]
+log = "immutable_heads()..@ | immutable_heads()"

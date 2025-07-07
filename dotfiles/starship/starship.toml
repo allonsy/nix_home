@@ -27,4 +27,4 @@ truncate_to_repo = false
 
 [custom.jj]
 command = ''' jj log --no-graph -r @ -T 'if(self.empty(), "@", "@*") ++ ": " ++ self.parents().map(|p| if(p.bookmarks().len() > 0, p.bookmarks(), p.change_id().shortest()))' '''
-when = 'jj status'
+when = 'jj root'
