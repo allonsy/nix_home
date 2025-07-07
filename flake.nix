@@ -32,7 +32,9 @@
 
               #macos packages
               awscli2
+              dapr-cli
               k9s
+              stow
               tfswitch
               tgswitch
             ];
