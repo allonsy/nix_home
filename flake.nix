@@ -38,6 +38,7 @@
               awscli2
               dapr-cli
               k9s
+              kubectl
               stow
               tfswitch
               tgswitch
