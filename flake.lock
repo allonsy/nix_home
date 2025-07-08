@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "commentary": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1729562730,
+        "narHash": "sha256-0a45pvYAbMxwN2URFX1lxIFBwWCq46LPai2GnGuL0Uo=",
+        "owner": "tpope",
+        "repo": "vim-commentary",
+        "rev": "64a654ef4a20db1727938338310209b6a63f60c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpope",
+        "repo": "vim-commentary",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1749523198,
@@ -16,9 +32,24 @@
         "type": "github"
       }
     },
+    "nvim": {
+      "inputs": {
+        "commentary": "commentary"
+      },
+      "locked": {
+        "path": "./nvim",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nvim",
+        "type": "path"
+      },
+      "parent": []
+    },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nvim": "nvim"
       }
     }
   },
