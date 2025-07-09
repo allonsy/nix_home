@@ -34,7 +34,8 @@
     },
     "nvim": {
       "inputs": {
-        "commentary": "commentary"
+        "commentary": "commentary",
+        "treeSitter": "treeSitter"
       },
       "locked": {
         "path": "./nvim",
@@ -50,6 +51,23 @@
       "inputs": {
         "nixpkgs": "nixpkgs",
         "nvim": "nvim"
+      }
+    },
+    "treeSitter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752049854,
+        "narHash": "sha256-4NE4Jp2W/cv2mpSAb4ZI0X6X0bkBAIBymWP/gkY12jE=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "rev": "4eb12d7a1f82b6c8db9929bf2c4b38dc3177dd82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "ref": "main",
+        "repo": "nvim-treesitter",
+        "type": "github"
       }
     }
   },

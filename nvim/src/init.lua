@@ -42,3 +42,5 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 
+-- tree-sitter
+require('tree-sitter-conf')
