@@ -15,4 +15,7 @@ compinit
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
+source ~/.nix-profile/usr/config/zsh/aliases.zsh
+
 eval "$(atuin init zsh)"
+eval "$(~/.nix-profile/bin/starship init zsh)"

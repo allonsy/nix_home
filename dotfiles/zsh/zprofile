@@ -1,1 +1,2 @@
 eval $(ssh-agent)
+source ~/.nix-profile/usr/config/zsh/env_vars.zsh

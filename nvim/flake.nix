@@ -36,10 +36,8 @@
             mkdir -p $out/usr/config/nvim
             mkdir -p $out/usr/config/nvim/plugins/start
             mkdir -p $out/usr/config/nvim/plugins/opt
-            mkdir -p $out/bin/
 
             cp -r * $out/usr/config/nvim/
-            ln -s ${pkgs.tree-sitter}/bin/tree-sitter $out/bin/tree-sitter
 
             # plugins
             ln -s ${commentary} $out/usr/config/nvim/plugins/start/commentary
