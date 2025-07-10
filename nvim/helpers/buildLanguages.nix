@@ -23,6 +23,8 @@ in
     dontUnpack=true;
 
     installPhase = ''
+      mkdir -p $TMP/.cache
+      export XDG_CACHE_HOME=$TMP/.cache
       mkdir -p $out/languages
       mkdir -p $out/languages/parser
       mkdir -p $out/languages/parser-info
