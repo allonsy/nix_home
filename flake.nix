@@ -41,6 +41,7 @@
               #macos packages
               awscli2
               dapr-cli
+              jdk23
               k9s
               kubectl
               stow
