@@ -23,6 +23,7 @@
             paths = with pkgs; [
               atuin
               dotfiles
+              calibre
               eza
               git
               jujutsu
