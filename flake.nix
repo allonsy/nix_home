@@ -8,7 +8,7 @@
 
   outputs = { self, nixpkgs, nvim }:
     let
-      system = "x86_64-linux";
+      system = "aarch64-darwin";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -16,18 +16,17 @@
       nvimConfig = nvim.build pkgs;
       dotfiles = (import ./dotfiles/dotfiles.nix) pkgs;
       scripts = (import ./scripts) pkgs;
-      wrapGL = (import ./wrapGL.nix) pkgs;
+      vendored_uv = (import ./packages/vendor_uv.nix) pkgs;
     in {
       packages.${system}.default = pkgs.buildEnv {
             name = "home";
             paths = with pkgs; [
               atuin
               dotfiles
-              calibre
               eza
               git
               jujutsu
-              (wrapGL kitty [ "kitty" ] {extraBins=["kitten"];})
+              kitty
               neovim
               nvimConfig
               nix
@@ -36,9 +35,18 @@
               python3
               rustup
               scripts
-              uv
+              vendored_uv
               zsh
 
+              #macos packages
+              awscli2
+              dapr-cli
+              jdk23
+              k9s
+              kubectl
+              stow
+              tfswitch
+              tgswitch
             ];
           };
     };
