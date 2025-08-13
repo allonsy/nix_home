@@ -1,7 +1,3 @@
-[user]
-name = "Alec Snyder"
-email = "alec.snyder@at-bay.com"
-
 [ui]
 default-command = ["status"]
 editor = "vim"

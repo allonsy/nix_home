@@ -8,17 +8,23 @@
 
   outputs = { self, nixpkgs, nvim }:
     let
-      system = "aarch64-darwin";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      nvimConfig = nvim.build pkgs;
-      dotfiles = (import ./dotfiles/dotfiles.nix) pkgs;
-      scripts = (import ./scripts) pkgs;
-      vendored_uv = (import ./packages/vendor_uv.nix) pkgs;
-    in {
-      packages.${system}.default = pkgs.buildEnv {
+      forEachSystems = (import ./systems.nix).forEachSystem;
+    in
+      forEachSystems (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          nvimConfig = nvim.build pkgs;
+          dotfiles = (import ./dotfiles/dotfiles.nix) system pkgs;
+          scripts = (import ./scripts) pkgs;
+          vendored_uv = (import ./packages/vendor_uv.nix) system pkgs;
+          macosPackages = (import ./packages/macos_base.nix) pkgs;
+          linuxPackages = (import ./packages/linux_base.nix) pkgs;
+          systemPackages = if system == (import ./systems.nix).macos then macosPackages else linuxPackages;
+        in
+          pkgs.buildEnv {
             name = "home";
             paths = with pkgs; [
               atuin
@@ -26,7 +32,6 @@
               eza
               git
               jujutsu
-              kitty
               neovim
               nvimConfig
               nix
@@ -37,17 +42,7 @@
               scripts
               vendored_uv
               zsh
-
-              #macos packages
-              awscli2
-              dapr-cli
-              jdk23
-              k9s
-              kubectl
-              stow
-              tfswitch
-              tgswitch
-            ];
-          };
-    };
+            ] ++ systemPackages;
+          }
+      );
 }

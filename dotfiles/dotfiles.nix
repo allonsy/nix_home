@@ -1,6 +1,9 @@
-nixpkgs:
+system: nixpkgs:
   let
     starship = "${nixpkgs.starship}/bin/starship";
+    macosSystem = (import ../systems.nix).macos;
+    envVarFile = if system == macosSystem then "env_vars.macos.zsh" else "env_vars.linux.zsh";
+    email = if system == macosSystem then "alec.snyder@at-bay.com" else "linuxbash8@gmail.com";
   in
     nixpkgs.stdenv.mkDerivation {
       name = "home_dotfiles";
@@ -13,6 +16,7 @@ nixpkgs:
         mkdir -p $out/usr/config/starship
 
         cp zsh/* $out/usr/config/zsh
+        cat zsh/${envVarFile} >> $out/usr/config/zsh/env_vars.zsh
 
         #starship
         cp ${starship} $out/bin/starship
@@ -20,7 +24,13 @@ nixpkgs:
 
         # jujutsu
         mkdir -p $out/usr/config/jj
-        cp jujutsu/config.toml $out/usr/config/jj/config.toml
+        cat <<EOF > $out/usr/config/jj/config.toml
+        [user]
+        name = "Alec Snyder"
+        email = "${email}"
+
+        EOF
+        cat jujutsu/config.toml >> $out/usr/config/jj/config.toml
 
         # nix
         mkdir -p $out/usr/config/nix
