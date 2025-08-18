@@ -1,14 +1,36 @@
 {
-  description = "Home declarative flake";
+  description = "home";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nvim.url = "./nvim";
+    jj.url = "./packages/jujutsu";
+    kitty.url = "./packages/kitty";
+    nix.url = "./packages/nix";
+    nvim.url = "./packages/nvim";
+    scripts.url = "./packages/scripts";
+    uv = {
+      url = "./packages/uv";
+      inputs.macUV.url = "https://github.com/astral-sh/uv/releases/download/0.7.8/uv-aarch64-apple-darwin.tar.gz";
+    };
+    zsh.url = "./packages/zsh";
   };
 
-  outputs = { self, nixpkgs, nvim }:
+  outputs = {
+    self,
+    nixpkgs,
+    jj,
+    kitty,
+    nix,
+    nvim,
+    scripts,
+    uv,
+    zsh,
+  }:
     let
-      forEachSystems = (import ./systems.nix).forEachSystem;
+      systems = import ./systems.nix;
+      forEachSystems = systems.forEachSystem;
+      macosSystem = systems.macos;
+      linuxSystem = systems.linux;
     in
       forEachSystems (system:
         let
@@ -16,33 +38,28 @@
             inherit system;
             config.allowUnfree = true;
           };
-          nvimConfig = nvim.build pkgs;
-          dotfiles = (import ./dotfiles/dotfiles.nix) system pkgs;
-          scripts = (import ./scripts) pkgs;
-          vendored_uv = (import ./packages/vendor_uv.nix) system pkgs;
-          macosPackages = (import ./packages/macos_base.nix) pkgs;
-          linuxPackages = (import ./packages/linux_base.nix) pkgs;
-          systemPackages = if system == (import ./systems.nix).macos then macosPackages else linuxPackages;
+          identifier = if system == macosSystem then "macos" else "linux";
+          basePackages = (import ./packages/packages.base.nix) pkgs;
+          systemPackages = (import ./packages/packages.${identifier}.nix) pkgs;
+          _jj = jj.package identifier pkgs;
+          _kitty = kitty.package identifier pkgs;
+          _nix = nix.package identifier pkgs;
+          _nvim = nvim.package identifier pkgs;
+          _scripts = scripts.package identifier pkgs;
+          _uv = uv.package identifier pkgs;
+          _zsh = zsh.package identifier pkgs;
         in
           pkgs.buildEnv {
             name = "home";
-            paths = with pkgs; [
-              atuin
-              dotfiles
-              eza
-              git
-              jujutsu
-              neovim
-              nvimConfig
-              nix
-              nodejs
-              pnpm
-              python3
-              rustup
-              scripts
-              vendored_uv
-              zsh
-            ] ++ systemPackages;
+            paths = [
+              _jj
+              _kitty
+              _nix
+              _nvim
+              _scripts
+              _uv
+              _zsh
+            ] ++ basePackages ++ systemPackages;
           }
       );
 }

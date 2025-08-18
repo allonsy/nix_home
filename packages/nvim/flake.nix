@@ -1,5 +1,5 @@
 {
-  description = "nvim flake";
+  description = "nvim";
 
   inputs = {
     commentary = {
@@ -23,7 +23,7 @@
     lspConfig,
   }:
     {
-      build = pkgs:
+      package = system: pkgs:
       let
         languages = [
           "lua"
@@ -34,7 +34,7 @@
         builtLanguages = languageBuilder languages;
       in
         pkgs.stdenv.mkDerivation {
-          name = "neovim config";
+          name = "nvim";
           src = ./src;
 
           installPhase = ''
@@ -54,6 +54,7 @@
             cat ${builtLanguages}/conf.lua >> $out/usr/config/nvim/lua/lsp-conf.lua
 
             cp ${builtLanguages}/bin/* $out/bin
+            cp ${pkgs.neovim}/bin/nvim $out/bin/nvim
           '';
         };
     };

@@ -16,14 +16,36 @@
         "type": "github"
       }
     },
+    "jj": {
+      "locked": {
+        "path": "./packages/jujutsu",
+        "type": "path"
+      },
+      "original": {
+        "path": "./packages/jujutsu",
+        "type": "path"
+      },
+      "parent": []
+    },
+    "kitty": {
+      "locked": {
+        "path": "./packages/kitty",
+        "type": "path"
+      },
+      "original": {
+        "path": "./packages/kitty",
+        "type": "path"
+      },
+      "parent": []
+    },
     "lspConfig": {
       "flake": false,
       "locked": {
-        "lastModified": 1755031464,
-        "narHash": "sha256-APKl0pvgqfVNVbHrcXCbJ4YMHANrK2LxGdoh5j3TJ3A=",
+        "lastModified": 1755614617,
+        "narHash": "sha256-eFvaJQdguDMuJm9nMY0v6PJBJZGEZ2hB3E30y3J7qHo=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "45ff1914044de7dbd4cd85053dc09f47312a2f4d",
+        "rev": "a6bf2d1100b974c6feb9b66995fab945d876d515",
         "type": "github"
       },
       "original": {
@@ -32,13 +54,37 @@
         "type": "github"
       }
     },
+    "macUV": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748042839,
+        "narHash": "sha256-G8nJt0tEKjw0VrvA4RGJCXLYyTGPXY059RCVbkmtI1M=",
+        "type": "tarball",
+        "url": "https://github.com/astral-sh/uv/releases/download/0.7.8/uv-aarch64-apple-darwin.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/astral-sh/uv/releases/download/0.7.8/uv-aarch64-apple-darwin.tar.gz"
+      }
+    },
+    "nix": {
+      "locked": {
+        "path": "./packages/nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "./packages/nix",
+        "type": "path"
+      },
+      "parent": []
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1755020227,
-        "narHash": "sha256-gGmm+h0t6rY88RPTaIm3su95QvQIVjAJx558YUG4Id8=",
+        "lastModified": 1755268003,
+        "narHash": "sha256-nNaeJjo861wFR0tjHDyCnHs1rbRtrMgxAKMoig9Sj/w=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "695d5db1b8b20b73292501683a524e0bd79074fb",
+        "rev": "32f313e49e42f715491e1ea7b306a87c16fe0388",
         "type": "github"
       },
       "original": {
@@ -55,29 +101,46 @@
         "treeSitter": "treeSitter"
       },
       "locked": {
-        "path": "./nvim",
+        "path": "./packages/nvim",
         "type": "path"
       },
       "original": {
-        "path": "./nvim",
+        "path": "./packages/nvim",
         "type": "path"
       },
       "parent": []
     },
     "root": {
       "inputs": {
+        "jj": "jj",
+        "kitty": "kitty",
+        "nix": "nix",
         "nixpkgs": "nixpkgs",
-        "nvim": "nvim"
+        "nvim": "nvim",
+        "scripts": "scripts",
+        "uv": "uv",
+        "zsh": "zsh"
       }
+    },
+    "scripts": {
+      "locked": {
+        "path": "./packages/scripts",
+        "type": "path"
+      },
+      "original": {
+        "path": "./packages/scripts",
+        "type": "path"
+      },
+      "parent": []
     },
     "treeSitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1755072114,
-        "narHash": "sha256-H6RIurV6y5wdk4T0rgXcvYfMT21OOf9sdvCKkcUJTcM=",
+        "lastModified": 1755597398,
+        "narHash": "sha256-sANM5wjk62FHubG62xH74n3ykWR1NUpBwRLxkmTn3n8=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "cabbd52bb8d461ca1e6858c0476933256917de62",
+        "rev": "6fd7117c1dc4e279f4153af70ae60bd4134b0f01",
         "type": "github"
       },
       "original": {
@@ -86,6 +149,31 @@
         "repo": "nvim-treesitter",
         "type": "github"
       }
+    },
+    "uv": {
+      "inputs": {
+        "macUV": "macUV"
+      },
+      "locked": {
+        "path": "./packages/uv",
+        "type": "path"
+      },
+      "original": {
+        "path": "./packages/uv",
+        "type": "path"
+      },
+      "parent": []
+    },
+    "zsh": {
+      "locked": {
+        "path": "./packages/zsh",
+        "type": "path"
+      },
+      "original": {
+        "path": "./packages/zsh",
+        "type": "path"
+      },
+      "parent": []
     }
   },
   "root": "root",
