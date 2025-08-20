@@ -9,5 +9,6 @@ pkgs:
       nodejs
       pnpm
       python3
+      ripgrep
       rustup
     ]
