@@ -20,7 +20,7 @@ vim.o.signcolumn = 'yes'
 vim.o.updatetime = 250
 
 -- Decrease mapped sequence wait time
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 500
 
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -40,7 +40,20 @@ vim.o.confirm = true
 
 -- keymaps
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
 
+-- telescope
+require('telescope_conf')
+local telescope_builtin = require('telescope.builtin')
+
+-- lsp keymaps
+vim.keymap.set('n', 'gd', telescope_builtin.lsp_definitions, { desc = 'Goto Definition' })
+vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { desc = 'Goto References' })
+vim.keymap.set('n', 'gt', telescope_builtin.lsp_type_definitions, { desc = 'Goto Type Definitions' })
+vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Goto Code Actions' })
+
+-- harpoon
+require('harpoon_conf')
 
 -- tree-sitter
 require('tree-sitter-conf')
