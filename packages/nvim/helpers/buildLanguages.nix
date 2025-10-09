@@ -2,13 +2,21 @@ pkgs: ts: languages:
 let
   languageConfBuilder = (import ./getLanguageConf.nix) pkgs ts;
   languageLSPConfig = (import ./lsp.nix);
+  overrides = (import ./overrides.nix);
 
   languageCommandList = map (language:
     let
       languageConf = languageConfBuilder language;
       repo = "${languageConf.repo}.git";
       revision = languageConf.revision;
-      languageRepo = builtins.fetchGit { name=language; url=languageConf.repo; rev=languageConf.revision; };
+      actualRevision =
+        if builtins.stringLength languageConf.revision != 40
+        then
+          overrides.${language}.${languageConf.revision}
+        else languageConf.revision;
+      languageRepo = builtins.fetchGit (
+        { name=language; url=languageConf.repo; rev=actualRevision; }
+      );
       lsp_config_line =
         if
           builtins.hasAttr language languageLSPConfig &&
