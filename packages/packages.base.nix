@@ -3,6 +3,7 @@ pkgs:
   in
     with pkgs;
     [
+      bat
       eza
       git
       neovim
