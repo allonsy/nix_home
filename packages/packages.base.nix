@@ -6,6 +6,7 @@ pkgs:
       bat
       eza
       git
+      mergiraf
       neovim
       nodejs
       pnpm
