@@ -1,13 +1,10 @@
 pkgs:
   let
-    awsNoTests = pkgs.awscli2.overrideAttrs {
-      pytestCheckPhase = "echo 'Skipping pytestCheckPhase for awscli'";
-    };
   in
     with pkgs; [
-      awsNoTests
+      awscli2
       dapr-cli
-      jdk23
+      jdk
       k9s
       kubectl
       stow
