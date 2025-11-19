@@ -4,7 +4,7 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
-format = "$directory$python$line_break$character"
+format = "$directory$python${custom.nenv}$line_break$character"
 right_format = "${custom.jj}"
 
 [character]
@@ -28,3 +28,7 @@ truncate_to_repo = false
 [custom.jj]
 command = ''' jj log --no-graph -r @ -T 'if(self.empty(), "@", "@*") ++ ": " ++ self.parents().map(|p| if(p.bookmarks().len() > 0, p.bookmarks(), p.change_id().shortest()))' '''
 when = 'jj root'
+
+[custom.nenv]
+when = 'nenv -s'
+format = "[nenv](fg:yellow)"
