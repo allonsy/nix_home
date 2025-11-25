@@ -27,3 +27,7 @@ log = "trunk()..@ | trunk()"
 
 [templates]
 git_push_bookmark = '"alec/" ++ change_id.short()'
+
+[fix.tools.ruff]
+command = ["uvx", "ruff", "format", "--stdin-filename=$path"]
+patterns = ["glob:'**/*.py'"]
