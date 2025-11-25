@@ -9,7 +9,7 @@ bk = ["bookmark"]
 push = ["git", "push"]
 pull = ["git", "fetch"]
 fork = ["new", "--after", "trunk()", "--before", "@", "--no-edit"]
-clean = ["new", "all:bookmarks() & mine()"]
+clean = ["new", "bookmarks() & mine()"]
 ll = ["log", "-r", "(trunk()..mine()):: | trunk()"]
 la = ["log", "-r", "::"]
 
