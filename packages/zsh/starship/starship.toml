@@ -4,7 +4,7 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
-format = "$directory$python${custom.nenv}$line_break$character"
+format = "$directory$python ${custom.nenv}$line_break$character"
 right_format = "${custom.jj}"
 
 [character]

@@ -12,6 +12,7 @@ fork = ["new", "--after", "trunk()", "--before", "@", "--no-edit"]
 clean = ["new", "bookmarks() & mine()"]
 ll = ["log", "-r", "(trunk()..mine()):: | trunk()"]
 la = ["log", "-r", "::"]
+syndiff = ["diff", "--tool", "difftastic"]
 
 [git]
 push-new-bookmarks = true
@@ -21,6 +22,10 @@ auto-local-bookmark = true
 program = "pycharm"
 merge-args = ["merge", "$left", "$right", "$base", "$output"]
 edit-args = ["diff", "$left", "$right"]
+
+[merge-tools.difftastic]
+program = "difft"
+diff-args = ["--color=always", "$left", "$right"]
 
 [revsets]
 log = "trunk()..@ | trunk()"

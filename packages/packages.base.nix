@@ -4,6 +4,7 @@ pkgs:
     with pkgs;
     [
       bat
+      difftastic
       eza
       git
       mergiraf
