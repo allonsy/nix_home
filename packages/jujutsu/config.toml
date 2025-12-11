@@ -6,7 +6,7 @@ merge-editor = "mergiraf"
 
 [aliases]
 bk = ["bookmark"]
-push = ["git", "push"]
+push = ["git", "push", "--tracked", "--deleted"]
 pull = ["git", "fetch"]
 fork = ["new", "--after", "trunk()", "--before", "@", "--no-edit"]
 clean = ["new", "bookmarks() & mine()"]
@@ -14,9 +14,11 @@ ll = ["log", "-r", "(trunk()..mine()):: | trunk()"]
 la = ["log", "-r", "::"]
 syndiff = ["diff", "--tool", "difftastic"]
 
-[git]
-push-new-bookmarks = true
-auto-local-bookmark = true
+[remotes.origin]
+auto-track-bookmarks = "glob:*"
+
+[remotes.upstream]
+auto-track-bookmarks = "glob:*"
 
 [merge-tools.pycharm]
 program = "pycharm"

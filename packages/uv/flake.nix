@@ -3,7 +3,7 @@
 
   inputs = {
     macUV = {
-      url = "";
+      url = "https://github.com/astral-sh/uv/releases/download/0.7.8/uv-aarch64-apple-darwin.tar.gz";
       flake = false;
     };
   };
