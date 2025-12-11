@@ -10,7 +10,6 @@
     scripts.url = "./packages/scripts";
     uv = {
       url = "./packages/uv";
-      inputs.macUV.url = "https://github.com/astral-sh/uv/releases/download/0.7.8/uv-aarch64-apple-darwin.tar.gz";
     };
     zsh.url = "./packages/zsh";
   };
