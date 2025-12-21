@@ -8,15 +8,17 @@
     };
   };
 
-  outputs = {
-    self,
-    macUV,
-  }:
+  outputs =
     {
-      package = system: pkgs:
-      let
-        uv = if system == "linux" then "${pkgs.uv}/bin" else macUV;
-      in
+      self,
+      macUV,
+    }:
+    {
+      package =
+        system: pkgs:
+        let
+          uv = if system.isLinux then "${pkgs.uv}/bin" else macUV;
+        in
         pkgs.stdenv.mkDerivation {
           name = "uv";
           src = null;

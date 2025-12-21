@@ -4,15 +4,17 @@
   inputs = {
   };
 
-  outputs = {
-    self,
-  }:
+  outputs =
     {
-      package = system: pkgs:
-      let
-        starship = "${pkgs.starship}/bin/starship";
-        envVarFile = "env_vars.${system}.zsh";
-      in
+      self,
+    }:
+    {
+      package =
+        system: pkgs:
+        let
+          starship = "${pkgs.starship}/bin/starship";
+          envVarFile = "env_vars.${system.name}.zsh";
+        in
         pkgs.stdenv.mkDerivation {
           name = "zsh";
           src = ./.;

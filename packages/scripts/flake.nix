@@ -4,13 +4,13 @@
   inputs = {
   };
 
-  outputs = {
-    self,
-  }:
+  outputs =
     {
-      package = system: pkgs:
-      let
-      in
+      self,
+    }:
+    {
+      package =
+        system: pkgs:
         pkgs.stdenv.mkDerivation {
           name = "scripts";
           src = ./.;

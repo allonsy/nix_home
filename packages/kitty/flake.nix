@@ -4,16 +4,18 @@
   inputs = {
   };
 
-  outputs = {
-    self,
-  }:
+  outputs =
     {
-      package = system: pkgs:
-      let
-        wrapGL = (import ../utils/wrapGL.nix) pkgs;
-        wrappedKitty = wrapGL pkgs.kitty ["kitty"] {extraBins=["kitten"];};
-        kitty = if system == "linux" then wrappedKitty else pkgs.kitty;
-      in
+      self,
+    }:
+    {
+      package =
+        system: pkgs:
+        let
+          wrapGL = (import ../utils/wrapGL.nix) pkgs;
+          wrappedKitty = wrapGL pkgs.kitty [ "kitty" ] { extraBins = [ "kitten" ]; };
+          kitty = if system.isLinux then wrappedKitty else pkgs.kitty;
+        in
         pkgs.stdenv.mkDerivation {
           name = "kitty";
           src = ./.;
