@@ -4,14 +4,16 @@
   inputs = {
   };
 
-  outputs = {
-    self,
-  }:
+  outputs =
     {
-      package = system: pkgs:
-      let
-        email = if system == "linux" then "linuxbash8@gmail.com" else "alec.snyder@at-bay.com";
-      in
+      self,
+    }:
+    {
+      package =
+        system: pkgs:
+        let
+          email = if system.isLinux then "linuxbash8@gmail.com" else "alec.snyder@at-bay.com";
+        in
         pkgs.stdenv.mkDerivation {
           name = "jujutsu";
           src = ./.;
