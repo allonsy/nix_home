@@ -33,7 +33,7 @@ diff-args = ["--color=always", "$left", "$right"]
 log = "trunk()..@ | trunk()"
 
 [templates]
-git_push_bookmark = '"alec/" ++ change_id.short()'
+git_push_bookmark = '"alec/" ++ change_id.shortest(4)'
 
 [fix.tools.ruff-lint]
 command = ["uvx", "ruff", "check", "--force-exclude", "--fix-only", "--stdin-filename=$path"]
