@@ -4,6 +4,7 @@ pkgs: with pkgs; [
   jdk
   k9s
   kubectl
+  poppler-utils
   stow
   tfswitch
   tgswitch
