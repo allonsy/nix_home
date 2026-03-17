@@ -28,27 +28,29 @@
     };
   };
 
-  outputs = {
-    self,
-    commentary,
-    harpoon,
-    lspConfig,
-    plenary,
-    telescope,
-    treeSitter,
-  }:
+  outputs =
     {
-      package = system: pkgs:
-      let
-        languages = [
-          "lua"
-          "rust"
-          "python"
-        ];
-        languageBuilder = (import ./helpers/buildLanguages.nix) pkgs treeSitter;
-        builtLanguages = languageBuilder languages;
-        pluginDir = "$out/usr/config/nvim/plugins/start";
-      in
+      self,
+      commentary,
+      harpoon,
+      lspConfig,
+      plenary,
+      telescope,
+      treeSitter,
+    }:
+    {
+      package =
+        system: pkgs:
+        let
+          languages = [
+            "lua"
+            "rust"
+            "python"
+          ];
+          languageBuilder = (import ./helpers/buildLanguages.nix) pkgs treeSitter;
+          builtLanguages = languageBuilder languages;
+          pluginDir = "$out/usr/config/nvim/plugins/start";
+        in
         pkgs.stdenv.mkDerivation {
           name = "nvim";
           src = ./src;

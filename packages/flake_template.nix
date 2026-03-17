@@ -4,19 +4,20 @@
   inputs = {
   };
 
-  outputs = {
-    self,
-  }:
+  outputs =
     {
-      package = system: pkgs:
-      let
-      in
+      self,
+    }:
+    {
+      package =
+        system: pkgs:
+        let
+        in
         pkgs.stdenv.mkDerivation {
           name = "";
           src = ./.;
 
-          installPhase = ''
-          '';
+          installPhase = "";
         };
     };
 }
