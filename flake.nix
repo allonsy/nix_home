@@ -3,41 +3,54 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    home.url = "./packages/home";
+    commentary = {
+      url = "github:tpope/vim-commentary";
+      flake = false;
+    };
+    harpoon = {
+      url = "github:theprimeagen/harpoon/harpoon2";
+      flake = false;
+    };
+    lspConfig = {
+      url = "github:neovim/nvim-lspconfig";
+      flake = false;
+    };
+    plenary = {
+      url = "github:nvim-lua/plenary.nvim";
+      flake = false;
+    };
+    telescope = {
+      url = "github:nvim-telescope/telescope.nvim";
+      flake = false;
+    };
+    treeSitter = {
+      url = "github:nvim-treesitter/nvim-treesitter/main";
+      flake = false;
+    };
   };
 
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
-      home,
+      ...
     }:
     let
-      systems = import ./systems.nix;
-      linux = systems.linux;
-      macos = systems.macos;
-      nyx = systems.nyx;
+      framework = import ./framework.nix;
+      macosPkgs = framework {
+        inherit nixpkgs;
+        inherit inputs;
+        system = "aarch64-darwin";
+      };
+      linuxPkgs = framework {
+        inherit nixpkgs;
+        inherit inputs;
+        system = "x86_64-linux";
+      };
     in
     {
-      packages.${linux.system} =
-        let
-          pkgs = import nixpkgs {
-            system = linux.system;
-            config.allowUnfree = true;
-          };
-        in
-        {
-          home = home.package linux pkgs;
-          nyx = { };
-        };
-      packages.${macos.system}.home =
-        let
-          pkgs = import nixpkgs {
-            system = macos.system;
-            config.allowUnfree = true;
-          };
-        in
-        home.package macos pkgs;
+      packages.x86_64-linux.home = linuxPkgs.home;
+      packages.aarch64-darwin.home = macosPkgs.home;
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
     };

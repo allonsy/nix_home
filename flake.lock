@@ -33,60 +33,14 @@
         "type": "github"
       }
     },
-    "home": {
-      "inputs": {
-        "jj": "jj",
-        "kitty": "kitty",
-        "nix": "nix",
-        "nvim": "nvim",
-        "scripts": "scripts",
-        "uv": "uv",
-        "zsh": "zsh"
-      },
-      "locked": {
-        "path": "./packages/home",
-        "type": "path"
-      },
-      "original": {
-        "path": "./packages/home",
-        "type": "path"
-      },
-      "parent": []
-    },
-    "jj": {
-      "locked": {
-        "path": "../jujutsu",
-        "type": "path"
-      },
-      "original": {
-        "path": "../jujutsu",
-        "type": "path"
-      },
-      "parent": [
-        "home"
-      ]
-    },
-    "kitty": {
-      "locked": {
-        "path": "../kitty",
-        "type": "path"
-      },
-      "original": {
-        "path": "../kitty",
-        "type": "path"
-      },
-      "parent": [
-        "home"
-      ]
-    },
     "lspConfig": {
       "flake": false,
       "locked": {
-        "lastModified": 1773709670,
-        "narHash": "sha256-7yjOvjbW6zCMDflkN1ey3eCGjtBOH4w96I8Pc4YHKyY=",
+        "lastModified": 1773780735,
+        "narHash": "sha256-2OAqh6YQYhsqxtZAKUneq93TrUUSWjeWQna1jec3ToM=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "dc2f86d2b66a6e01a98c37cdadd3be3e90f8ab9a",
+        "rev": "702f69fb167e9119f14adc4dfd4fcadf4d1b07a0",
         "type": "github"
       },
       "original": {
@@ -94,40 +48,14 @@
         "repo": "nvim-lspconfig",
         "type": "github"
       }
-    },
-    "macUV": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1748042839,
-        "narHash": "sha256-G8nJt0tEKjw0VrvA4RGJCXLYyTGPXY059RCVbkmtI1M=",
-        "type": "tarball",
-        "url": "https://github.com/astral-sh/uv/releases/download/0.7.8/uv-aarch64-apple-darwin.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/astral-sh/uv/releases/download/0.7.8/uv-aarch64-apple-darwin.tar.gz"
-      }
-    },
-    "nix": {
-      "locked": {
-        "path": "../nix",
-        "type": "path"
-      },
-      "original": {
-        "path": "../nix",
-        "type": "path"
-      },
-      "parent": [
-        "home"
-      ]
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1773597492,
-        "narHash": "sha256-hQ284SkIeNaeyud+LS0WVLX+WL2rxcVZLFEaK0e03zg=",
+        "lastModified": 1773628058,
+        "narHash": "sha256-hpXH0z3K9xv0fHaje136KY872VT2T5uwxtezlAskQgY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a07d4ce6bee67d7c838a8a5796e75dff9caa21ef",
+        "rev": "f8573b9c935cfaa162dd62cc9e75ae2db86f85df",
         "type": "github"
       },
       "original": {
@@ -136,27 +64,6 @@
         "repo": "nixpkgs",
         "type": "github"
       }
-    },
-    "nvim": {
-      "inputs": {
-        "commentary": "commentary",
-        "harpoon": "harpoon",
-        "lspConfig": "lspConfig",
-        "plenary": "plenary",
-        "telescope": "telescope",
-        "treeSitter": "treeSitter"
-      },
-      "locked": {
-        "path": "../nvim",
-        "type": "path"
-      },
-      "original": {
-        "path": "../nvim",
-        "type": "path"
-      },
-      "parent": [
-        "home"
-      ]
     },
     "plenary": {
       "flake": false,
@@ -176,22 +83,14 @@
     },
     "root": {
       "inputs": {
-        "home": "home",
-        "nixpkgs": "nixpkgs"
+        "commentary": "commentary",
+        "harpoon": "harpoon",
+        "lspConfig": "lspConfig",
+        "nixpkgs": "nixpkgs",
+        "plenary": "plenary",
+        "telescope": "telescope",
+        "treeSitter": "treeSitter"
       }
-    },
-    "scripts": {
-      "locked": {
-        "path": "../scripts",
-        "type": "path"
-      },
-      "original": {
-        "path": "../scripts",
-        "type": "path"
-      },
-      "parent": [
-        "home"
-      ]
     },
     "telescope": {
       "flake": false,
@@ -212,11 +111,11 @@
     "treeSitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1773737235,
-        "narHash": "sha256-Q84OMEwo5ICAglsnKcNpnH3cMeYVlvZM4ID8YCJJTg8=",
+        "lastModified": 1773768003,
+        "narHash": "sha256-lQMRGqObOxoESWDD8+RSZAKmevVXzHS3IipBthvi3To=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "2cc172c28e5550e00e6beead4599b1469469c1c7",
+        "rev": "2b50ab5ccbcd9e5708deb351308edd738adbf84c",
         "type": "github"
       },
       "original": {
@@ -225,35 +124,6 @@
         "repo": "nvim-treesitter",
         "type": "github"
       }
-    },
-    "uv": {
-      "inputs": {
-        "macUV": "macUV"
-      },
-      "locked": {
-        "path": "../uv",
-        "type": "path"
-      },
-      "original": {
-        "path": "../uv",
-        "type": "path"
-      },
-      "parent": [
-        "home"
-      ]
-    },
-    "zsh": {
-      "locked": {
-        "path": "../zsh",
-        "type": "path"
-      },
-      "original": {
-        "path": "../zsh",
-        "type": "path"
-      },
-      "parent": [
-        "home"
-      ]
     }
   },
   "root": "root",
