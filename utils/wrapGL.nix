@@ -33,6 +33,5 @@ nixpkgs.stdenv.mkDerivation {
     mkdir -p $out/bin
     ${symLinkCommands}
 
-    chmod +x $out/bin/*
   '';
 }

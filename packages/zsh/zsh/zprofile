@@ -1,1 +1,4 @@
-source ~/.nix-profile/usr/config/zsh/env_vars.zsh
+if [[ -z "$ZPROFILE_ACTIVATED" ]]; then
+  export ZPROFILE_ACTIVATED=1
+  source ~/.nix-profile/usr/config/zsh/env_vars.zsh
+fi

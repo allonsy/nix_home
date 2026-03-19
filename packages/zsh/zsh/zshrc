@@ -19,5 +19,5 @@ bindkey '^N' history-beginning-search-forward
 
 source ~/.nix-profile/usr/config/zsh/aliases.zsh
 
-eval "$(atuin init zsh)"
+eval "$(atuin hex init zsh)"
 eval "$(starship init zsh)"

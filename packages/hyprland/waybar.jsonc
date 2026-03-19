@@ -1,0 +1,13 @@
+{
+	"position": "bottom",
+	"height": 30,
+	"spacing": 4,
+	"modules-right": [
+		"clock",
+		"hyprland/workspaces"
+	],
+	"clock": {
+		"interval": 30,
+		"format": "{:%Y-%m-%d %H:%M}"
+	}
+}

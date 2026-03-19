@@ -3,6 +3,7 @@ default-command = ["status"]
 editor = "vim"
 conflict-marker-style = "git"
 merge-editor = "mergiraf"
+pager = "bat -p"
 
 [aliases]
 bk = ["bookmark"]

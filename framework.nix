@@ -1,6 +1,7 @@
 {
   nixpkgs,
   system,
+  isNyx ? false,
   inputs ? { },
   extras ? { },
   ...
@@ -13,6 +14,7 @@ let
   lib = pkgs.lib;
   systemArguments = rec {
     inherit system;
+    inherit isNyx;
     isLinux = system == "x86_64-linux";
     isMacos = system == "aarch64-darwin";
     systemName = if isLinux then "linux" else "macos";
