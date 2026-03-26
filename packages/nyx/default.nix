@@ -39,6 +39,7 @@ let
     openssh
     rofi
     rustup
+    signal-desktop
     uv
     zed-editor
     zoom-us
