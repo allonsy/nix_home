@@ -5,35 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     atuin.url = "github:atuinsh/atuin";
     atuin.inputs.nixpkgs.follows = "nixpkgs";
-    commentary = {
-      url = "github:tpope/vim-commentary";
-      flake = false;
-    };
-    harpoon = {
-      url = "github:theprimeagen/harpoon/harpoon2";
-      flake = false;
-    };
-    lspConfig = {
-      url = "github:neovim/nvim-lspconfig";
-      flake = false;
-    };
-    plenary = {
-      url = "github:nvim-lua/plenary.nvim";
-      flake = false;
-    };
-    telescope = {
-      url = "github:nvim-telescope/telescope.nvim";
-      flake = false;
-    };
-    treeSitter = {
-      url = "github:nvim-treesitter/nvim-treesitter/main";
-      flake = false;
-    };
   };
 
   outputs =
     inputs@{
-      self,
       nixpkgs,
       ...
     }:

@@ -1,48 +1,37 @@
-{
+inputs@{
   pkgs,
   stdenv,
-  commentary,
-  harpoon,
-  lspConfig,
-  plenary,
-  telescope,
-  treeSitter,
+  rsync,
   ...
 }:
 let
-  languages = [
-    "lua"
-    "rust"
-    "python"
-  ];
-  languageBuilder = (import ./helpers/buildLanguages.nix) pkgs treeSitter;
-  builtLanguages = languageBuilder languages;
-  pluginDir = "$out/usr/config/nvim/plugins/start";
+  languages = (import ./languages) inputs;
+  plugins = (import ./plugins) inputs;
 in
 stdenv.mkDerivation {
   name = "nvim";
   src = ./src;
 
   installPhase = ''
-    mkdir -p $out/usr/config/nvim
-    mkdir -p ${pluginDir}
-    mkdir -p $out/usr/config/nvim/plugins/opt
+    export NVIM_CONFIG_DIR=$out/usr/config/nvim
+    mkdir -p $NVIM_CONFIG_DIR
+    mkdir -p $NVIM_CONFIG_DIR/parser/
+    mkdir -p $NVIM_CONFIG_DIR/queries/
+    mkdir -p $NVIM_CONFIG_DIR/plugins/
+    mkdir -p $NVIM_CONFIG_DIR/lsp/
+
     mkdir -p $out/bin
 
-    cp -r * $out/usr/config/nvim/
+    cp -r * $NVIM_CONFIG_DIR
 
-    # plugins
-    ln -s ${commentary} ${pluginDir}/commentary
-    ln -s ${harpoon} ${pluginDir}/harpoon
-    ln -s ${lspConfig} ${pluginDir}/lspConfig
-    ln -s ${plenary} ${pluginDir}/plenary
-    ln -s ${telescope} ${pluginDir}/telescope
-    ln -s ${treeSitter} ${pluginDir}/treesitter
-
-    ln -s ${builtLanguages}/languages $out/usr/config/nvim/
-    cat ${builtLanguages}/conf.lua >> $out/usr/config/nvim/lua/lsp-conf.lua
-
-    cp ${builtLanguages}/bin/* $out/bin
     cp ${pkgs.neovim}/bin/nvim $out/bin/nvim
+
+    cp -r ${languages}/parser/* $NVIM_CONFIG_DIR/parser
+    ${rsync} ${languages}/queries/ $NVIM_CONFIG_DIR/queries
+    cp ${languages}/lsp/* $NVIM_CONFIG_DIR/lsp
+    cat ${languages}/conf.lua >> $NVIM_CONFIG_DIR/lua/lsp-conf.lua
+
+    cp -r ${plugins}/plugins/* $NVIM_CONFIG_DIR/plugins
+
   '';
 }

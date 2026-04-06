@@ -12,6 +12,7 @@ let
     config.allowUnfree = true;
   };
   lib = pkgs.lib;
+  rsync = "${pkgs.rsync}/bin/rsync";
   systemArguments = rec {
     inherit system;
     inherit isNyx;
@@ -33,6 +34,7 @@ let
         system = system;
         lib = lib;
         stdenv = pkgs.stdenv;
+        rsync = rsync;
       }
       // utils
       // systemArguments

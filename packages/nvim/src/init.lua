@@ -55,8 +55,5 @@ vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Goto Code Actions' 
 -- harpoon
 require('harpoon_conf')
 
--- tree-sitter
-require('tree-sitter-conf')
-
 -- lsps
 require('lsp-conf')

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "rust",
+    "repo": "https://github.com/tree-sitter/tree-sitter-rust.git",
+    "commit": "77a3747266f4d621d0757825e6b11edcbf991ca5",
+    "lspPackageName": "rust-analyzer",
+    "cmd": ["rust-analyzer"],
+    "filetypes": ["rust"],
+    "rootMarkers": ["Cargo.toml", "Cargo.lock"]
+  },
+  {
+    "name": "python",
+    "repo": "https://github.com/tree-sitter/tree-sitter-python.git",
+    "commit": "26855eabccb19c6abf499fbc5b8dc7cc9ab8bc64",
+    "lspPackageName": "ruff",
+    "cmd": ["ruff", "server"],
+    "filetypes": ["python"],
+    "rootMarkers": ["pyproject.toml", "setup.py", "ruff.toml", ".git"]
+  }
+]
