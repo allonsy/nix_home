@@ -8,6 +8,7 @@
   scripts,
   nvim,
   ssh,
+  zed,
   ...
 }:
 let
@@ -19,6 +20,7 @@ let
     nvim
     ssh
     scripts
+    zed
     zsh
   ];
 
@@ -41,7 +43,6 @@ let
     rustup
     signal-desktop
     uv
-    zed-editor
     zoom-us
   ];
 in

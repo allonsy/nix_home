@@ -38,3 +38,7 @@ ln -sf ~/.nix-profile/usr/config/nvim ~/.config/nvim
 # ssh
 mkdir -p ~/.ssh
 ln -sf ~/.nix-profile/usr/config/ssh/ssh_config ~/.ssh/config
+
+# zed
+rm -rf ~/.config/zed
+ln -sf ~/.nix-profile/usr/config/zed ~/.config/zed
