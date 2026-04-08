@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    atuin.url = "github:atuinsh/atuin";
-    atuin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
