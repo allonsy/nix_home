@@ -5,10 +5,10 @@
   ...
 }:
 let
-  vendoredUVVersion = "0.7.8";
+  vendoredUVVersion = "0.10.12";
   macUV = fetchTarball {
     url = "https://github.com/astral-sh/uv/releases/download/${vendoredUVVersion}/uv-aarch64-apple-darwin.tar.gz";
-    sha256 = "sha256:0lr3mm4nx58hylwqspcg674xhwh9i48y3h5vaqs3qaj49fvwkj8v";
+    sha256 = "sha256:0rw271h0laqnsykxzjbc72xc12vgb4hvdny83n811g141wq45h0l";
     name = "vendored-uv-${vendoredUVVersion}";
   };
   uv = if isLinux then "${pkgs.uv}/bin" else macUV;
