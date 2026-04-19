@@ -4,7 +4,7 @@ pkgs: with pkgs; [
   eza
   git
   mergiraf
-  nil
+  nixd
   neovim
   nodejs
   pnpm

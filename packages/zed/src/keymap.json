@@ -40,5 +40,35 @@
     "bindings": {
       "escape escape": "terminal_panel::ToggleFocus"
     }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-shift-n": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-shift-n": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "ctrl-shift-n": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "unbind": {
+      "cmd-shift-n": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-shift-n": "editor::SelectDown"
+    }
   }
 ]

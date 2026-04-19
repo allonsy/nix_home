@@ -4,7 +4,10 @@
 }:
 stdenv.mkDerivation {
   name = "";
-  src = ./.;
+  src = ./src;
+
+  # src = null;
+  # dontUnpack = true;
 
   installPhase = "";
 }

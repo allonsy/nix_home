@@ -3,11 +3,12 @@
   wrapGL,
   stdenv,
   isLinux,
-  isNyx,
+  hostname,
   ...
 }:
 let
   wrappedKitty = wrapGL pkgs pkgs.kitty [ "kitty" ] { extraBins = [ "kitten" ]; };
+  isNyx = hostname == "nyx";
   kitty = if isLinux && !isNyx then wrappedKitty else pkgs.kitty;
 in
 stdenv.mkDerivation {

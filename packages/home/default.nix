@@ -6,6 +6,7 @@
   nvim,
   scripts,
   uv,
+  zed,
   zsh,
   systemName,
   ...
@@ -24,6 +25,7 @@ pkgs.buildEnv {
     nvim
     scripts
     uv
+    zed
     zsh
   ]
   ++ basePackages

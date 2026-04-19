@@ -1,18 +1,26 @@
 #!/bin/sh
 
+set -euo pipefail
+
+cd $(dirname "$0")
+
+. ./setup_utils.sh
+
 # zsh
-ln -sf ~/.nix-profile/usr/config/zsh/zshrc ~/.zshrc
-ln -sf ~/.nix-profile/usr/config/zsh/zprofile ~/.zprofile
-mkdir -p ~/.config
-ln -sf ~/.nix-profile/usr/config/starship/config.toml ~/.config/starship.toml
+link ~/.nix-profile/usr/config/zsh/zshrc ~/.zshrc
+link ~/.nix-profile/usr/config/zsh/zprofile ~/.zprofile
+link ~/.nix-profile/usr/config/starship/config.toml ~/.config/starship.toml
 
 # jujutsu
-mkdir -p ~/.config/jj
-ln -sf ~/.nix-profile/usr/config/jj/config.toml ~/.config/jj/config.toml
+link ~/.nix-profile/usr/config/jj/config.toml ~/.config/jj/config.toml
 
 # nix
-mkdir -p ~/.config/nix
-ln -sf ~/.nix-profile/usr/config/nix/nix.conf ~/.config/nix/nix.conf
+link ~/.nix-profile/usr/config/nix/nix.conf ~/.config/nix/nix.conf
 
 # kitty
-ln -sf ~/.nix-profile/usr/config/kitty ~/.config/
+link ~/.nix-profile/usr/config/kitty ~/.config/kitty
+
+# zed
+link ~/.nix-profile/usr/config/zed/settings.json ~/.config/zed/settings.json
+link ~/.nix-profile/usr/config/zed/keymap.json ~/.config/zed/keymap.json
+link ~/.nix-profile/usr/config/zed/themes ~/.config/zed/themes

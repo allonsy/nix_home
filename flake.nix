@@ -16,23 +16,25 @@
         inherit nixpkgs;
         inherit inputs;
         system = "aarch64-darwin";
+        hostname = "macos";
       };
       linuxPkgs = framework {
         inherit nixpkgs;
         inherit inputs;
         system = "x86_64-linux";
+        hostname = "linux";
       };
       nyxPkgs = framework {
         inherit nixpkgs;
         inherit inputs;
         system = "x86_64-linux";
-        isNyx = true;
+        hostname = "nyx";
       };
     in
     {
-      packages.x86_64-linux.home = linuxPkgs.home;
-      packages.x86_64-linux.nyx = nyxPkgs.nyx;
-      packages.aarch64-darwin.home = macosPkgs.home;
+      packages.x86_64-linux.nyx = nyxPkgs;
+      packages.x86_64-linux.linux = linuxPkgs;
+      packages.aarch64-darwin.macos = macosPkgs;
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
     };

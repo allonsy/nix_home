@@ -1,7 +1,7 @@
 {
   nixpkgs,
   system,
-  isNyx ? false,
+  hostname,
   inputs ? { },
   extras ? { },
   ...
@@ -15,7 +15,7 @@ let
   rsync = "${pkgs.rsync}/bin/rsync";
   systemArguments = rec {
     inherit system;
-    inherit isNyx;
+    inherit hostname;
     isLinux = system == "x86_64-linux";
     isMacos = system == "aarch64-darwin";
     systemName = if isLinux then "linux" else "macos";

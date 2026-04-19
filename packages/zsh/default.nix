@@ -2,10 +2,11 @@
   pkgs,
   stdenv,
   systemName,
-  isNyx,
+  hostname,
   ...
 }:
 let
+  isNyx = hostname == "nyx";
   starship = "${pkgs.starship}/bin/starship";
   envVarFile = if isNyx then "env_vars.nyx.zsh" else "env_vars.${systemName}.zsh";
   systemAliasFile = if isNyx then "aliases.nyx.zsh" else "aliases.${systemName}.zsh";
