@@ -1,0 +1,10 @@
+# /etc/pam.d/login
+
+auth     [success=done default=ignore] pam_succeed_if.so user = alecsnyder
+auth     sufficient                    pam_permit.so
+
+auth     required    pam_unix.so
+
+account  required    pam_unix.so
+session  required    /usr/lib/security/pam_systemd.so
+password required    pam_unix.so

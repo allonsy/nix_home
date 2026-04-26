@@ -1,0 +1,15 @@
+[Unit]
+Description=DHCPCD supplicant daemon (for interface %I)
+Requires=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+Before=network.target
+Wants=network.target
+
+# NetworkManager users will probably want the dbus version instead.
+
+[Service]
+Type=forking
+ExecStart=/bin/dhcpcd %I
+
+[Install]
+WantedBy=multi-user.target

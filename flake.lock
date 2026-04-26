@@ -1,23 +1,39 @@
 {
   "nodes": {
+    "framework": {
+      "locked": {
+        "lastModified": 1779649229,
+        "narHash": "sha256-DmNUtjh/hXy7IIpD9i8zcGbMls39n9nCXSy5kVXw0pg=",
+        "owner": "allonsy",
+        "repo": "flake-framework",
+        "rev": "bb09f14b64bd53b5810980bf2dcae997e4137c1e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "allonsy",
+        "repo": "flake-framework",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1775639890,
-        "narHash": "sha256-9O9gNidrdzcb7vgKGtff7QiLtr0IsVaCi0pAXm8anhQ=",
+        "lastModified": 1779560665,
+        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "456e8a9468b9d46bd8c9524425026c00745bc4d2",
+        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
+        "framework": "framework",
         "nixpkgs": "nixpkgs"
       }
     }

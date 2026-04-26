@@ -1,0 +1,12 @@
+[Unit]
+Description=Start nix daemon
+Wants=local-fs.target
+After=local-fs.target
+Before=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/bin/seatd -g video
+
+[Install]
+WantedBy=multi-user.target

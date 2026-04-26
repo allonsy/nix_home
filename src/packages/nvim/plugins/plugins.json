@@ -1,0 +1,28 @@
+[
+  {
+    "name": "commentary",
+    "repo": "https://github.com/tpope/vim-commentary.git",
+    "commit": "64a654ef4a20db1727938338310209b6a63f60c9"
+  },
+  {
+    "name": "harpoon",
+    "ref": "harpoon2",
+    "repo": "https://github.com/ThePrimeagen/harpoon.git",
+    "commit": "87b1a3506211538f460786c23f98ec63ad9af4e5"
+  },
+  {
+    "name": "lsp-config",
+    "repo": "https://github.com/neovim/nvim-lspconfig.git",
+    "commit": "a4ed4e761c400849e8c9f8bda33e5083f890268c"
+  },
+  {
+    "name": "plenary",
+    "repo": "https://github.com/nvim-lua/plenary.nvim",
+    "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b"
+  },
+  {
+    "name": "telescope",
+    "repo": "https://github.com/nvim-telescope/telescope.nvim.git",
+    "commit": "7d324792b7943e4aa16ad007212e6acc6f9fe335"
+  }
+]

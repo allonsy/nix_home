@@ -1,0 +1,63 @@
+{
+  pkgs,
+  hyprland,
+  jujutsu,
+  zsh,
+  nix,
+  kitty,
+  kernel,
+  scripts,
+  nvim,
+  ssh,
+  sudo,
+  zed,
+  init,
+  locale,
+  fonts,
+  polkit,
+  ...
+}:
+let
+  allPkgs = with pkgs; [
+    alsa-utils
+    bash
+    bat
+    coreutils
+    dhcpcd
+    dbus
+    eza
+    fonts
+    git
+    google-chrome
+    hyprland
+    init
+    jujutsu
+    kernel
+    kitty
+    kmod
+    locale
+    nix
+    nixd
+    nvim
+    openssh
+    pam
+    polkit
+    rofi
+    rustup
+    scripts
+    seatd
+    ssh
+    strace
+    systemd
+    sudo
+    tmux
+    uv
+    wpa_supplicant
+    zed
+    zsh
+  ];
+in
+pkgs.buildEnv {
+  name = "nyx";
+  paths = allPkgs;
+}
