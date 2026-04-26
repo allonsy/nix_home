@@ -1,24 +1,75 @@
 {
   "nodes": {
+    "delta": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1790627002,
+        "narHash": "sha256-WzQk4PwD7DfNMqRH1u8WjYsbnacDhXlOyVOzz1Z3vys=",
+        "owner": "zed-industries",
+        "repo": "delta-nix",
+        "rev": "1e8ebdf63cf63188d6c1f5b5f08deb7ada823e8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zed-industries",
+        "repo": "delta-nix",
+        "type": "github"
+      }
+    },
+    "framework": {
+      "locked": {
+        "lastModified": 1790628023,
+        "narHash": "sha256-5blBi8qVXFpmB+A9922k7JF1JD1wGWe04AJGWHeImoA=",
+        "owner": "allonsy",
+        "repo": "flake-framework",
+        "rev": "2895ce158d27ae90885275bd824d3fb0dc398e3b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "allonsy",
+        "repo": "flake-framework",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1775639890,
-        "narHash": "sha256-9O9gNidrdzcb7vgKGtff7QiLtr0IsVaCi0pAXm8anhQ=",
+        "lastModified": 1783224372,
+        "narHash": "sha256-8i/87eeoqiGE4yOTjwSA3Eh/ziJRQEmd/unYU+K27sk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "456e8a9468b9d46bd8c9524425026c00745bc4d2",
+        "rev": "d407951447dcd00442e97087bf374aad70c04cea",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1790578696,
+        "narHash": "sha256-ZoxIApko70jCdbH3l20HWXOBaT2HZd87orzd2yJ9dVE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "7a0f122f5090cf4c2ade2a13a0e229d4e19ba71f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "delta": "delta",
+        "framework": "framework",
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },

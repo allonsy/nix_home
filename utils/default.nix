@@ -1,3 +1,0 @@
-{
-  wrapGL = (import ./wrapGL.nix);
-}

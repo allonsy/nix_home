@@ -1,0 +1,70 @@
+{
+  pkgs,
+  hyprland,
+  jujutsu,
+  zsh,
+  nix,
+  kitty,
+  kernel,
+  scripts,
+  nvim,
+  ssh,
+  sudo,
+  zed,
+  init,
+  locale,
+  fonts,
+  polkit,
+  delta,
+  system,
+  ...
+}:
+let
+  deltaBin = delta.packages.${system}.default;
+  allPkgs = with pkgs; [
+    alsa-utils
+    bash
+    bat
+    coreutils
+    deltaBin
+    dhcpcd
+    dbus
+    eza
+    fonts
+    gcr_3 # prompt for gnome-keyring
+    git
+    gnome-keyring
+    google-chrome
+    hyprland
+    init
+    jujutsu
+    kernel
+    kitty
+    kmod
+    locale
+    nix
+    nixd
+    nvim
+    openssh
+    pam
+    polkit
+    rofi
+    rustup
+    scripts
+    seatd
+    ssh
+    strace
+    systemd
+    sudo
+    tmux
+    uv
+    wpa_supplicant
+    xdg-utils
+    zed
+    zsh
+  ];
+in
+pkgs.buildEnv {
+  name = "nyx";
+  paths = allPkgs;
+}

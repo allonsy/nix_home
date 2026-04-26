@@ -1,0 +1,12 @@
+polkit.addAdminRule(function (action, subject) {
+  return ["unix-group:sudo"];
+});
+
+polkit.addRule(function (action, subject) {
+  if (
+    action.id == "org.freedesktop.systemd1.manage-units" &&
+    subject.isInGroup("sudo")
+  ) {
+    return polkit.Result.AUTH_SELF_KEEP;
+  }
+});
