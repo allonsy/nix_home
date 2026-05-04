@@ -1,12 +1,40 @@
 {
   "nodes": {
+    "framework": {
+      "locked": {
+        "lastModified": 1779649229,
+        "narHash": "sha256-DmNUtjh/hXy7IIpD9i8zcGbMls39n9nCXSy5kVXw0pg=",
+        "owner": "allonsy",
+        "repo": "flake-framework",
+        "rev": "bb09f14b64bd53b5810980bf2dcae997e4137c1e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "allonsy",
+        "repo": "flake-framework",
+        "type": "github"
+      }
+    },
+    "hostnameFlake": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779868047,
+        "narHash": "sha256-Tg+04akCQuBIbV9EjWNS83TSzBbznDPxvAwWh62daBg=",
+        "path": "/nix/host.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/host.nix",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1775639890,
-        "narHash": "sha256-9O9gNidrdzcb7vgKGtff7QiLtr0IsVaCi0pAXm8anhQ=",
+        "lastModified": 1786098110,
+        "narHash": "sha256-shi1tjDhCGGd0kIgVPNY03V8NBWSTzhMSFDb7IqSoec=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "456e8a9468b9d46bd8c9524425026c00745bc4d2",
+        "rev": "afb4584a80bbf779ce0f691509ff902d188c2b3d",
         "type": "github"
       },
       "original": {
@@ -18,6 +46,8 @@
     },
     "root": {
       "inputs": {
+        "framework": "framework",
+        "hostnameFlake": "hostnameFlake",
         "nixpkgs": "nixpkgs"
       }
     }

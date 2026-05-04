@@ -1,15 +1,14 @@
 {
   pkgs,
-  wrapGL,
+  utils,
   stdenv,
-  isLinux,
-  hostname,
+  vars,
   ...
 }:
 let
-  wrappedKitty = wrapGL pkgs pkgs.kitty [ "kitty" ] { extraBins = [ "kitten" ]; };
-  isNyx = hostname == "nyx";
-  kitty = if isLinux && !isNyx then wrappedKitty else pkgs.kitty;
+  wrappedKitty = utils.wrapGL pkgs pkgs.kitty [ "kitty" ] { extraBins = [ "kitten" ]; };
+  isNyx = vars.hostname == "nyx";
+  kitty = if vars.isLinux && !isNyx then wrappedKitty else pkgs.kitty;
 in
 stdenv.mkDerivation {
   name = "kitty";

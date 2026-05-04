@@ -38,7 +38,7 @@
   },
   {
     "bindings": {
-      "escape escape": "terminal_panel::ToggleFocus"
+      "\\ \\": "terminal_panel::ToggleFocus"
     }
   },
   {

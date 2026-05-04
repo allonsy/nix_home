@@ -1,15 +1,13 @@
 {
   pkgs,
   stdenv,
-  systemName,
-  hostname,
+  vars,
   ...
 }:
 let
-  isNyx = hostname == "nyx";
   starship = "${pkgs.starship}/bin/starship";
-  envVarFile = if isNyx then "env_vars.nyx.zsh" else "env_vars.${systemName}.zsh";
-  systemAliasFile = if isNyx then "aliases.nyx.zsh" else "aliases.${systemName}.zsh";
+  envVarFile = if vars.isNyx then "env_vars.nyx.zsh" else "env_vars.${vars.hostname}.zsh";
+  systemAliasFile = if vars.isNyx then "aliases.nyx.zsh" else "aliases.${vars.hostname}.zsh";
 in
 stdenv.mkDerivation {
   name = "zsh";

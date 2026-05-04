@@ -1,9 +1,10 @@
 inputs@{
+  pkgs,
   stdenv,
-  rsync,
   ...
 }:
 let
+  rsync = "${pkgs.rsync}/bin/rsync";
   buildGrammar' = import ./buildGrammar.nix;
   buildGrammar = conf: buildGrammar' (inputs // conf);
   grammarConfigs = builtins.fromJSON (builtins.readFile ./languages.json);

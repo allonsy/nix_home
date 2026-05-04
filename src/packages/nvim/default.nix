@@ -1,10 +1,10 @@
 inputs@{
   pkgs,
   stdenv,
-  rsync,
   ...
 }:
 let
+  rsync = "${pkgs.rsync}/bin/rsync";
   languages = (import ./languages) inputs;
   plugins = (import ./plugins) inputs;
 in

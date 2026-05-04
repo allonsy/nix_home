@@ -1,11 +1,11 @@
 {
   pkgs,
   stdenv,
-  isLinux,
+  vars,
   ...
 }:
 let
-  email = if isLinux then "linuxbash8@gmail.com" else "alec.snyder@at-bay.com";
+  email = if vars.isLinux then "linuxbash8@gmail.com" else "alec.snyder@at-bay.com";
 in
 stdenv.mkDerivation {
   name = "jujutsu";

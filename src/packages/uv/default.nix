@@ -1,7 +1,7 @@
 {
   pkgs,
   stdenv,
-  isLinux,
+  vars,
   ...
 }:
 let
@@ -11,7 +11,7 @@ let
     sha256 = "sha256:0rw271h0laqnsykxzjbc72xc12vgb4hvdny83n811g141wq45h0l";
     name = "vendored-uv-${vendoredUVVersion}";
   };
-  uv = if isLinux then "${pkgs.uv}/bin" else macUV;
+  uv = if vars.isLinux then "${pkgs.uv}/bin" else macUV;
 in
 stdenv.mkDerivation {
   name = "uv";

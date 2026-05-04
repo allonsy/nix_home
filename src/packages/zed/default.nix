@@ -1,7 +1,7 @@
 {
   pkgs,
   stdenv,
-  isMacos,
+  vars,
   ...
 }:
 stdenv.mkDerivation {
@@ -14,7 +14,7 @@ stdenv.mkDerivation {
     mkdir -p $out/usr/config/zed
 
     ${
-      if isMacos then
+      if vars.isMacos then
         ""
       else
         ''

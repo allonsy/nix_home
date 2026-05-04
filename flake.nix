@@ -3,45 +3,25 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    framework.url = "github:allonsy/flake-framework";
+    hostnameFlake = {
+      url = "path:/nix/host.nix";
+      flake = false;
+    };
   };
 
   outputs =
-    inputs@{
+    {
       nixpkgs,
+      framework,
+      hostnameFlake,
       ...
     }:
-    let
-      framework = import ./framework.nix;
-      macosPkgs = framework {
-        inherit nixpkgs;
-        inherit inputs;
-        packagesDir = ./packages;
-        system = "aarch64-darwin";
-        hostname = "macos";
+    framework.mkFlake {
+      nixpkgs = nixpkgs;
+      frameworkDir = ./src;
+      inputs = {
+        hostnameFlake = hostnameFlake;
       };
-      linuxPkgs = framework {
-        inherit nixpkgs;
-        inherit inputs;
-        packagesDir = ./packages;
-        system = "x86_64-linux";
-        hostname = "linux";
-      };
-      nyxPkgs = framework {
-        inherit nixpkgs;
-        inherit inputs;
-        packagesDir = ./packages;
-        system = "x86_64-linux";
-        hostname = "nyx";
-      };
-    in
-    {
-      packages.x86_64-linux.nyx = nyxPkgs;
-      packages.x86_64-linux.linux = linuxPkgs;
-      packages.aarch64-darwin.macos = macosPkgs;
-
-      lib.framework = framework;
-
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
     };
 }
