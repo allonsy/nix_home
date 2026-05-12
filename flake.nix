@@ -35,6 +35,9 @@
       packages.x86_64-linux.nyx = nyxPkgs;
       packages.x86_64-linux.linux = linuxPkgs;
       packages.aarch64-darwin.macos = macosPkgs;
+
+      lib.framework = framework;
+
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
     };
