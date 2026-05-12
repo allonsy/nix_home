@@ -15,18 +15,21 @@
       macosPkgs = framework {
         inherit nixpkgs;
         inherit inputs;
+        packagesDir = ./packages;
         system = "aarch64-darwin";
         hostname = "macos";
       };
       linuxPkgs = framework {
         inherit nixpkgs;
         inherit inputs;
+        packagesDir = ./packages;
         system = "x86_64-linux";
         hostname = "linux";
       };
       nyxPkgs = framework {
         inherit nixpkgs;
         inherit inputs;
+        packagesDir = ./packages;
         system = "x86_64-linux";
         hostname = "nyx";
       };

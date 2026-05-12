@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  packagesDir,
   system,
   hostname,
   inputs ? { },
@@ -22,7 +23,6 @@ let
   };
   utils = import ./utils;
 
-  packagesDir = ./packages;
   packageNames = builtins.attrNames (
     lib.filterAttrs (_name: type: type == "directory") (builtins.readDir packagesDir)
   );
