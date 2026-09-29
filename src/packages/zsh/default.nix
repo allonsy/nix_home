@@ -2,6 +2,7 @@
   pkgs,
   stdenv,
   vars,
+  utils,
   ...
 }:
 let
@@ -9,6 +10,9 @@ let
   starship = "${pkgs.starship}/bin/starship";
   envVarFile = if isNyx then "env_vars.nyx.zsh" else "env_vars.${vars.hostname}.zsh";
   systemAliasFile = if isNyx then "aliases.nyx.zsh" else "aliases.${vars.hostname}.zsh";
+  profileDir = if isNyx then "/system/current" else "~/.nix-profile";
+  zshrcFile = utils.writeTemplate ./zsh/zshrc { profileDir = profileDir; };
+  zprofileFile = utils.writeTemplate ./zsh/zprofile { profileDir = profileDir; };
 in
 stdenv.mkDerivation {
   name = "zsh";
@@ -26,8 +30,8 @@ stdenv.mkDerivation {
     cp zsh/env_vars.zsh $out/etc/config/zsh
     cat zsh/${envVarFile} >> $out/etc/config/zsh/env_vars.zsh
 
-    cp zsh/zshrc $out/etc/config/zsh/zshrc
-    cp zsh/zprofile $out/etc/config/zsh/zprofile
+    cp ${zshrcFile} $out/etc/config/zsh/zshrc
+    cp ${zprofileFile} $out/etc/config/zsh/zprofile
 
     cp ${pkgs.zsh}/bin/zsh $out/bin/zsh
     cp ${pkgs.atuin}/bin/atuin $out/bin/atuin

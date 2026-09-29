@@ -1,8 +1,9 @@
 {
+  system,
   ...
 }:
 let
-  hostname = "nyx";
+  hostname = if system == "aarch64-darwin" then "macos" else "nyx";
 in
 {
   hostname = hostname;
