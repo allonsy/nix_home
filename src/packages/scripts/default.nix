@@ -17,8 +17,6 @@ stdenv.mkDerivation {
     # nenv
     cp nenv.sh $out/bin/nenv
 
-    cp profile.sh $out/bin/nprofile
-
     # general
     chmod +x $out/bin/*
   '';

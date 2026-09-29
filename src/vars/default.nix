@@ -18,4 +18,6 @@ in
     path = "$out/share/dbus-1/system.d";
     relPath = "/share/dbus-1/system.d";
   };
+  FRAMEWORK_BUILD_DIR = "/home/alecsnyder/nix";
+  FRAMEWORK_PROFILE_DIR = "/system";
 }

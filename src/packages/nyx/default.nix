@@ -17,6 +17,7 @@
   polkit,
   delta,
   system,
+  profileManager,
   ...
 }:
 let
@@ -48,6 +49,7 @@ let
     openssh
     pam
     polkit
+    profileManager
     rofi
     rustup
     scripts

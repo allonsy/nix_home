@@ -1,4 +1,4 @@
 if [[ -z "$ZPROFILE_ACTIVATED" ]]; then
   export ZPROFILE_ACTIVATED=1
-  source {{ profileDir }}/etc/config/zsh/env_vars.zsh
+  source @profileDir@/etc/config/zsh/env_vars.zsh
 fi
