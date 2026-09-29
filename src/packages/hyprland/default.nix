@@ -39,7 +39,7 @@ stdenv.mkDerivation {
     chmod +x $out/bin/start_hyprland
 
     cp waybar.jsonc $out/etc/config/waybar/config.jsonc
-    cp hyprland.lua $out/etc/config/hypr/hyprland.lua
+    cp *.lua $out/etc/config/hypr
 
     sed -i -e 's#_XDPH_NIX_BINARY#${pkgs.xdg-desktop-portal-hyprland}/libexec/xdg-desktop-portal-hyprland#g' $out/etc/config/hypr/hyprland.lua
     sed -i -e 's#_XDP_NIX_BINARY#${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal#g' $out/etc/config/hypr/hyprland.lua
