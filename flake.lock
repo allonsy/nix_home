@@ -20,11 +20,11 @@
     },
     "framework": {
       "locked": {
-        "lastModified": 1790705992,
-        "narHash": "sha256-c29x4NagERBGLLu7GjILryCk/XhlmQt3NsSJNEbyZQA=",
+        "lastModified": 1790712279,
+        "narHash": "sha256-47WprCxNJQ1DRsvdW1yUNWbCpJRSCW2RKinNVMxK31g=",
         "owner": "allonsy",
         "repo": "flake-framework",
-        "rev": "1cd4aaccd12300140974a24ef72734e468491a86",
+        "rev": "f359307302057ce54cae6ba0a24563642e92d237",
         "type": "github"
       },
       "original": {
