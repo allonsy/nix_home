@@ -1,8 +1,11 @@
 {
   pkgs,
   stdenv,
+  vars,
   ...
 }:
+let
+in
 stdenv.mkDerivation {
   name = "systemd-init";
   src = ./src;
@@ -24,29 +27,35 @@ stdenv.mkDerivation {
     mkdir -p $out/etc/
     cp -r pam $out/etc/pam.d
 
-    mkdir -p $out/lib/systemd/system
-    cp -r ${pkgs.systemd}/example/systemd/system/* $out/lib/systemd/system
-    rm -f $out/lib/systemd/system/default.target
-    rm -f $out/lib/systemd/system/modprobe@.service
+    mkdir -p ${vars.systemd.systemPath}
+    mkdir -p ${vars.systemd.userPath}
 
-    mkdir -p $out/lib/systemd/user
-    mkdir -p $out/lib/systemd/user/multi-user.target.wants
-    mkdir -p $out/lib/systemd/user/local-fs.target.wants
-    mkdir -p $out/lib/systemd/user/network.target.wants
-    mkdir -p $out/lib/systemd/user/sysinit.target.wants
+    cp -r ${pkgs.systemd}/example/systemd/system/* ${vars.systemd.systemPath}
+    cp -r ${pkgs.systemd}/example/systemd/user/* ${vars.systemd.userPath}
 
-    ln -s $out/lib/systemd/system/systemd-remount-fs.service $out/lib/systemd/user/local-fs.target.wants/
-    ln -s $out/lib/systemd/system/getty@.service $out/lib/systemd/user/multi-user.target.wants/getty@tty1.service
+    chmod -R +w ${vars.systemd.systemPath}
+    chmod -R +w ${vars.systemd.userPath}
 
-    cp services/* $out/lib/systemd/user
+    rm -f ${vars.systemd.systemPath}/default.target
+    rm -f ${vars.systemd.systemPath}/modprobe@.service
 
-    ln -s $out/lib/systemd/user/modprobe@.service $out/lib/systemd/user/sysinit.target.wants/modprobe@amdgpu.service
-    ln -s $out/lib/systemd/user/modprobe@.service $out/lib/systemd/user/sysinit.target.wants/modprobe@iwlmvm.service
+    mkdir -p ${vars.systemd.systemPath}/startup.target.wants
+    mkdir -p ${vars.systemd.systemPath}/local-fs.target.wants
+    mkdir -p ${vars.systemd.systemPath}/network.target.wants
+    mkdir -p ${vars.systemd.systemPath}/sysinit.target.wants
 
-    ln -s $out/lib/systemd/user/wpa_supplicant@.service $out/lib/systemd/user/network.target.wants/wpa_supplicant@wlo1.service
-    ln -s $out/lib/systemd/user/dhcpcd@.service $out/lib/systemd/user/network.target.wants/dhcpcd@wlo1.service
-    ln -s $out/lib/systemd/user/nixd.service $out/lib/systemd/user/multi-user.target.wants/
-    ln -s $out/lib/systemd/user/bless-suid.service $out/lib/systemd/user/local-fs.target.wants/
+    ln -s ${vars.systemd.systemPath}/systemd-remount-fs.service ${vars.systemd.systemPath}/local-fs.target.wants/
+    ln -s ${vars.systemd.systemPath}/getty@.service ${vars.systemd.systemPath}/multi-user.target.wants/getty@tty1.service
+
+    cp -r services/user/* $out/lib/systemd/user
+    cp -r services/system/* $out/lib/systemd/system
+
+    ln -s ${vars.systemd.systemPath}/modprobe@.service ${vars.systemd.systemPath}/sysinit.target.wants/modprobe@amdgpu.service
+    ln -s ${vars.systemd.systemPath}/modprobe@.service ${vars.systemd.systemPath}/sysinit.target.wants/modprobe@iwlmvm.service
+
+    ln -s ${vars.systemd.systemPath}/wpa_supplicant@.service ${vars.systemd.systemPath}/network.target.wants/wpa_supplicant@wlo1.service
+    ln -s ${vars.systemd.systemPath}/dhcpcd@.service ${vars.systemd.systemPath}/network.target.wants/dhcpcd@wlo1.service
+    ln -s ${vars.systemd.systemPath}/bless-suid.service ${vars.systemd.systemPath}/local-fs.target.wants/
 
   '';
 }

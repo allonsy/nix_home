@@ -44,5 +44,5 @@ mount --move /dev /mnt/dev
 mount --move /proc /mnt/proc
 mount --move /sys /mnt/sys
 
-export SYSTEMD_UNIT_PATH=/lib/systemd/system:/lib/systemd/user:/system/current/etc/systemd/system
+# export SYSTEMD_UNIT_PATH=/lib/systemd/system:/lib/systemd/user:/system/current/etc/systemd/system
 exec switch_root /mnt /bin/init

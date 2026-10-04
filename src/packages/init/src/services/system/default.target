@@ -14,5 +14,5 @@ Requires=basic.target
 Requires=multi-user.target
 Wants=getty@tty1.service
 Conflicts=rescue.service rescue.target
-After=basic.target rescue.service rescue.target
+After=basic.target rescue.service rescue.target multi-user.target
 AllowIsolate=yes

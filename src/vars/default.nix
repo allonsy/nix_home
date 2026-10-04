@@ -10,9 +10,10 @@ in
   isLinux = hostname != "macos";
   isMacos = hostname == "macos";
   systemd = {
-    path = "$out/lib/systemd/user";
-    systemPath = "lib/systemd/system";
-    enabledPath = "$out/lib/systemd/user/multi-user.target.wants";
+    systemPath = "$out/lib/systemd/system";
+    userPath = "$out/lib/systemd/user";
+    systemEnabledPath = "$out/lib/systemd/system/multi-user.target.wants";
+    userEnabledPath = "$out/lib/systemd/user/basic.target.wants";
   };
   dbus = {
     path = "$out/share/dbus-1/system.d";

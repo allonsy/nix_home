@@ -1,0 +1,12 @@
+# /lib/systemd/user/polkit-agent-helper.socket -> /nix/store/ygpgy9g49wd9dgrvgz81fwhf9lg8v0s7-polkit/share/systemd/user/polkit-agent-helper.socket
+[Unit]
+Description=Authorization Manager Agent Helper
+Documentation=man:polkit(8)
+
+[Socket]
+Accept=yes
+RemoveOnStop=yes
+ListenStream=/run/polkit/agent-helper.socket
+
+[Install]
+WantedBy=sockets.target

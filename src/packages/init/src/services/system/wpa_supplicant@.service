@@ -10,6 +10,3 @@ Wants=network.target
 [Service]
 Type=simple
 ExecStart=/nix/store/ahvcvci710737cwrqq1mrlkck1gbyf9v-wpa_supplicant-2.11/sbin/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant-%I.conf -i%I
-
-[Install]
-WantedBy=multi-user.target

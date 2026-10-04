@@ -1,0 +1,7 @@
+[Unit]
+Description=Start seat daemon
+Before=user-startup.target
+
+[Service]
+Type=simple
+ExecStart=/bin/seatd -g video
