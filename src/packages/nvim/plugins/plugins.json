@@ -13,7 +13,7 @@
   {
     "name": "lsp-config",
     "repo": "https://github.com/neovim/nvim-lspconfig.git",
-    "commit": "a9bb4d5f4276aa5cddc015faa3ecc5a7b5a26b14"
+    "commit": "db68de3575fff9dd9bb78b34c8371759ed35fe34"
   },
   {
     "name": "plenary",

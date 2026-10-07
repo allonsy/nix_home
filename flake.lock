@@ -1,23 +1,5 @@
 {
   "nodes": {
-    "delta": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1790627002,
-        "narHash": "sha256-WzQk4PwD7DfNMqRH1u8WjYsbnacDhXlOyVOzz1Z3vys=",
-        "owner": "zed-industries",
-        "repo": "delta-nix",
-        "rev": "1e8ebdf63cf63188d6c1f5b5f08deb7ada823e8e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zed-industries",
-        "repo": "delta-nix",
-        "type": "github"
-      }
-    },
     "framework": {
       "locked": {
         "lastModified": 1790712279,
@@ -35,27 +17,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1783224372,
-        "narHash": "sha256-8i/87eeoqiGE4yOTjwSA3Eh/ziJRQEmd/unYU+K27sk=",
+        "lastModified": 1791260994,
+        "narHash": "sha256-Miqqk/ammqnTUxaoCyvtwoPeLbI1ksFyLxi/CazZpWY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d407951447dcd00442e97087bf374aad70c04cea",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1790578696,
-        "narHash": "sha256-ZoxIApko70jCdbH3l20HWXOBaT2HZd87orzd2yJ9dVE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "7a0f122f5090cf4c2ade2a13a0e229d4e19ba71f",
+        "rev": "151fa4e8ddfdd8dd25d945ad94ed54a13de9f6e4",
         "type": "github"
       },
       "original": {
@@ -67,9 +33,8 @@
     },
     "root": {
       "inputs": {
-        "delta": "delta",
         "framework": "framework",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
