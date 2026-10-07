@@ -25,5 +25,7 @@ pkgs.buildEnv {
     fontConfig
     pkgs.fontconfig
     pkgs.dejavu_fonts
+    pkgs.noto-fonts
+    pkgs.noto-fonts-color-emoji
   ];
 }
