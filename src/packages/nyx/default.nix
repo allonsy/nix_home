@@ -1,33 +1,31 @@
 {
   pkgs,
+  lib,
+  fonts,
   hyprland,
+  init,
   jujutsu,
-  zsh,
-  nix,
-  kitty,
   kernel,
-  scripts,
+  kitty,
+  locale,
+  nix,
   nvim,
   ssh,
   sudo,
-  zed,
-  init,
-  locale,
-  fonts,
   polkit,
-  delta,
-  system,
   profileManager,
+  scripts,
+  setup,
+  zed,
+  zsh,
   ...
 }:
 let
-  deltaBin = delta.packages.${system}.default;
   allPkgs = with pkgs; [
     alsa-utils
     bash
     bat
     coreutils
-    deltaBin
     dhcpcd
     dbus
     eza
@@ -54,6 +52,7 @@ let
     rustup
     scripts
     seatd
+    (lib.hiPrio setup)
     ssh
     strace
     systemd

@@ -10,6 +10,7 @@ session  required   pam_loginuid.so
 session  optional   pam_keyinit.so force revoke
 session  required   pam_namespace.so
 -session optional   /usr/lib/security/pam_systemd_home.so
+session  required   pam_env.so
 session  optional   pam_umask.so silent
 session  optional   /usr/lib/security/pam_systemd.so
 session  required   pam_unix.so

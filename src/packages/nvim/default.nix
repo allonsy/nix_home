@@ -25,6 +25,7 @@ stdenv.mkDerivation {
     cp -r * $NVIM_CONFIG_DIR
 
     cp ${pkgs.neovim}/bin/nvim $out/bin/nvim
+    ln -s $out/bin/nvim $out/bin/vim
 
     cp -r ${languages}/parser/* $NVIM_CONFIG_DIR/parser
     ${rsync} ${languages}/queries/ $NVIM_CONFIG_DIR/queries
