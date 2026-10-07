@@ -1,8 +1,24 @@
 {
   pkgs,
   stdenv,
+  utils,
   ...
 }:
+let
+  hyprland_start_script = utils.writeTemplate ./src/start_hyprland {
+    gbm_backends_path = "${pkgs.mesa}/lib/gbm";
+    libgl_drivers_path = "${pkgs.mesa}/lib/dri";
+    libva_drivers_path = "${pkgs.mesa}/lib/dri:${pkgs.intel-media-driver}/lib/dri";
+    egl_vendor_library_filenames = "${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json";
+    ld_library_path = "${pkgs.mesa}/lib:${pkgs.libvdpau-va-gl}/lib/vdpau:${pkgs.libglvnd}/lib";
+  };
+  autostart_script = utils.writeTemplate ./src/hypr/autostart.lua {
+    dph_nix_binary = "${pkgs.xdg-desktop-portal-hyprland}/libexec/xdg-desktop-portal-hyprland";
+    dp_nix_binary = "${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal";
+    pipewire_binary = "${pkgs.pipewire}/bin/pipewire";
+    wireplumber_binary = "${pkgs.wireplumber}/bin/wireplumber";
+  };
+in
 stdenv.mkDerivation {
   name = "hyprland";
   src = ./src;
@@ -18,32 +34,13 @@ stdenv.mkDerivation {
     cp ${pkgs.hyprland}/bin/start-hyprland $out/bin/
     cp ${pkgs.waybar}/bin/waybar $out/bin/
     cp ${pkgs.swaybg}/bin/swaybg $out/bin/
-
-    cat << EOF > $out/bin/start_hyprland
-    #!/usr/bin/env zsh
-
-    export GBM_BACKENDS_PATH=${pkgs.mesa}/lib/gbm
-    export LIBGL_DRIVERS_PATH=${pkgs.mesa}/lib/dri
-    export LIBVA_DRIVERS_PATH=${pkgs.mesa}/lib/dri:${pkgs.intel-media-driver}/lib/dri
-    export __EGL_VENDOR_LIBRARY_FILENAMES=${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json
-    export LD_LIBRARY_PATH=${pkgs.mesa}/lib:${pkgs.libvdpau-va-gl}/lib/vdpau:${pkgs.libglvnd}/lib
-    export TZ='Asia/Tel_Aviv'
-    export NO_AT_BRIDGE=1
-
-    eval \$(dbus-launch --sh-syntax --config-file=/usr/share/dbus-1/session.conf)
-
-    cd ~
-    start-hyprland --no-nixgl --path /usr/bin/hyprland
-    EOF
+    cp ${hyprland_start_script} $out/bin/start_hyprland
 
     chmod +x $out/bin/start_hyprland
 
     cp waybar.jsonc $out/etc/config/waybar/config.jsonc
-    cp *.lua $out/etc/config/hypr
+    cp -r hypr/* $out/etc/config/hypr
+    cp ${autostart_script} $out/etc/config/hypr/autostart.lua
 
-    sed -i -e 's#_XDPH_NIX_BINARY#${pkgs.xdg-desktop-portal-hyprland}/libexec/xdg-desktop-portal-hyprland#g' $out/etc/config/hypr/hyprland.lua
-    sed -i -e 's#_XDP_NIX_BINARY#${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal#g' $out/etc/config/hypr/hyprland.lua
-    sed -i -e 's#_PIPEWIRE_NIX_BINARY#${pkgs.pipewire}/bin/pipewire#g' $out/etc/config/hypr/hyprland.lua
-    sed -i -e 's#_WIREPLUMBER_NIX_BINARY#${pkgs.wireplumber}/bin/wireplumber#g' $out/etc/config/hypr/hyprland.lua
   '';
 }

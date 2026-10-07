@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+export GBM_BACKENDS_PATH=@gbm_backends_path@
+export LIBGL_DRIVERS_PATH=@libgl_drivers_path@
+export LIBVA_DRIVERS_PATH=@libva_drivers_path@
+export __EGL_VENDOR_LIBRARY_FILENAMES=@egl_vendor_library_filenames@
+export LD_LIBRARY_PATH=@ld_library_path@
+export TZ='Asia/Tel_Aviv'
+export NO_AT_BRIDGE=1
+
+eval $(dbus-launch --sh-syntax --config-file=/usr/share/dbus-1/session.conf)
+
+cd ~
+start-hyprland --no-nixgl --path /usr/bin/hyprland
