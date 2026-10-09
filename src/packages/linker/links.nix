@@ -1,0 +1,14 @@
+[
+  [
+    "etc/hostname"
+    "/etc/hostname"
+  ]
+  [
+    "etc/passwd"
+    "/etc/passwd"
+  ]
+  [
+    "etc/group"
+    "/etc/group"
+  ]
+]

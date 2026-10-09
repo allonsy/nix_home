@@ -7,6 +7,7 @@
   jujutsu,
   kernel,
   kitty,
+  linker,
   locale,
   nix,
   nvim,
@@ -40,6 +41,7 @@ let
     kernel
     kitty
     kmod
+    linker
     locale
     nix
     nixd
