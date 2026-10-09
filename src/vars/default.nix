@@ -9,6 +9,7 @@ in
   hostname = hostname;
   isLinux = hostname != "macos";
   isMacos = hostname == "macos";
+  timeZone = "Asia/Tel_Aviv";
   systemd = {
     systemPath = "$out/lib/systemd/system";
     userPath = "$out/lib/systemd/user";

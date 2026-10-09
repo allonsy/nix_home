@@ -2,6 +2,7 @@
   pkgs,
   stdenv,
   utils,
+  vars,
   ...
 }:
 let
@@ -11,6 +12,7 @@ let
     libva_drivers_path = "${pkgs.mesa}/lib/dri:${pkgs.intel-media-driver}/lib/dri";
     egl_vendor_library_filenames = "${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json";
     ld_library_path = "${pkgs.mesa}/lib:${pkgs.libvdpau-va-gl}/lib/vdpau:${pkgs.libglvnd}/lib";
+    time_zone = vars.timeZone;
   };
   autostart_script = utils.writeTemplate ./src/hypr/autostart.lua {
     dph_nix_binary = "${pkgs.xdg-desktop-portal-hyprland}/libexec/xdg-desktop-portal-hyprland";

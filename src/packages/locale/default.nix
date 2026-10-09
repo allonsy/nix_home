@@ -1,6 +1,7 @@
 {
   stdenv,
   pkgs,
+  vars,
   ...
 }:
 let
@@ -12,6 +13,7 @@ let
     allLocales = false;
     locales = locales;
   };
+  tzLocation = "${pkgs.tzdata}/share/zoneinfo/${vars.timeZone}";
   localeConf = stdenv.mkDerivation {
     name = "locale-conf";
     src = null;
@@ -19,8 +21,11 @@ let
 
     installPhase = ''
       mkdir -p $out/etc/
+      mkdir -p $out/share/zoneinfo/"$(dirname ${vars.timeZone})"
 
-      ln -s ${pkgs.tzdata}/share/zoneinfo/Asia/Tel_Aviv $out/etc/localtime
+
+      ln -s ${tzLocation} $out/etc/localtime
+      ln -s ${tzLocation} $out/share/zoneinfo/${vars.timeZone}
 
       echo "LANG=en_US.UTF-8" > $out/etc/locale.conf
     '';
