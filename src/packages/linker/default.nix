@@ -1,6 +1,7 @@
 {
   pkgs,
   stdenv,
+  lib,
   utils,
   vars,
   ...
@@ -17,7 +18,12 @@ let
     linker_file = linkerScript;
   };
   linkList = import ./links.nix;
-  links = (import ./jsonify.nix) prefix linkList;
+  links = (import ./jsonify.nix) {
+    prefix = prefix;
+    links = linkList;
+    lib = lib;
+    home_dir = vars.home_dir;
+  };
   new_symlink_file = utils.writeTemplate ./src/symlinks.json {
     links = links;
   };

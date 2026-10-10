@@ -11,4 +11,10 @@
     "etc/group"
     "/etc/group"
   ]
+
+  # nix
+  [
+    "etc/config/nix/nix.conf"
+    "@HOME@/.config/nix/nix.conf"
+  ]
 ]

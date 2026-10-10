@@ -1,5 +1,20 @@
-prefix: links:
+{
+  prefix,
+  links,
+  lib,
+  home_dir,
+  ...
+}:
 let
-  processLink = link: "[\"${prefix}${builtins.elemAt link 0}\", \"${builtins.elemAt link 1}\"],";
+  subHome = lib.strings.replaceString "@HOME@" home_dir;
+  stringify = str: "\"${str}\"";
+  normalizeSourcePath = str: "${prefix}${lib.removePrefix "/" str}";
+  preProcess = link: [
+    (stringify (normalizeSourcePath (builtins.elemAt link 0)))
+    (stringify (subHome (builtins.elemAt link 1)))
+  ];
+  joinLocations = link: builtins.concatStringsSep ", " (preProcess link);
+  processLink = link: "[ ${joinLocations link} ]";
+  processedLinks = builtins.concatStringsSep "," (map processLink links);
 in
-builtins.concatStringsSep "\n" (map processLink links)
+"[" + processedLinks + "]"

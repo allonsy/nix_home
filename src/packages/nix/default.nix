@@ -1,6 +1,7 @@
 {
   pkgs,
   stdenv,
+  vars,
   ...
 }:
 stdenv.mkDerivation {
@@ -9,9 +10,9 @@ stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    mkdir -p $out/usr/config/nix
+    mkdir -p $out${vars.config_dir}/nix
 
     cp ${pkgs.nix}/bin/nix $out/bin/nix
-    cp nix.conf $out/usr/config/nix
+    cp nix.conf $out/${vars.config_dir}/nix
   '';
 }
