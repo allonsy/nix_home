@@ -27,6 +27,7 @@ let
     bash
     bat
     coreutils
+    devenv
     dhcpcd
     dbus
     eza
@@ -47,6 +48,7 @@ let
     nixd
     nvim
     openssh
+    openssl.out
     pam
     polkit
     profileManager

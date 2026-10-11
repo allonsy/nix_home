@@ -34,7 +34,6 @@ stdenv.mkDerivation {
     cp ${zprofileFile} $out/etc/config/zsh/zprofile
 
     cp ${pkgs.zsh}/bin/zsh $out/bin/zsh
-    cp ${pkgs.atuin}/bin/atuin $out/bin/atuin
 
     #starship
     cp ${starship} $out/bin/starship
