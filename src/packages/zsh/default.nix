@@ -10,7 +10,7 @@ let
   starship = "${pkgs.starship}/bin/starship";
   envVarFile =
     if isNyx then
-      "env_vars.nyx.zsh"
+      ./zsh/env_vars.nyx.zsh
     else
       utils.writeTemplate ./zsh/env_vars.macos.zsh {
         java_home = pkgs.jdk;
