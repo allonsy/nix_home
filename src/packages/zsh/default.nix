@@ -8,7 +8,13 @@
 let
   isNyx = vars.hostname == "nyx";
   starship = "${pkgs.starship}/bin/starship";
-  envVarFile = if isNyx then "env_vars.nyx.zsh" else "env_vars.${vars.hostname}.zsh";
+  envVarFile =
+    if isNyx then
+      "env_vars.nyx.zsh"
+    else
+      utils.writeTemplate ./zsh/env_vars.macos.zsh {
+        java_home = pkgs.jdk;
+      };
   systemAliasFile = if isNyx then "aliases.nyx.zsh" else "aliases.${vars.hostname}.zsh";
   profileDir = if isNyx then "/system/current" else "~/.nix-profile";
   zshrcFile = utils.writeTemplate ./zsh/zshrc { profileDir = profileDir; };
@@ -28,7 +34,7 @@ stdenv.mkDerivation {
     cat zsh/${systemAliasFile} >> $out/etc/config/zsh/aliases.zsh
 
     cp zsh/env_vars.zsh $out/etc/config/zsh
-    cat zsh/${envVarFile} >> $out/etc/config/zsh/env_vars.zsh
+    cat ${envVarFile} >> $out/etc/config/zsh/env_vars.zsh
 
     cp ${zshrcFile} $out/etc/config/zsh/zshrc
     cp ${zprofileFile} $out/etc/config/zsh/zprofile

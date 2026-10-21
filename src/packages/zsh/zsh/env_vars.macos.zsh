@@ -5,6 +5,7 @@ export HOMEBREW_REPOSITORY=/opt/homebrew
 export INFOPATH=/opt/homebrew/share/info:$INFOPATH
 export KUBECONFIG=~/.kube/config-atbay
 export LD_LIBRARY_PATH=/opt/homebrew/lib:$LD_LIBRARY_PATH
+export JAVA_HOME=@java_home@
 
 if [[ -e .venv/bin/activate ]]; then
   source .venv/bin/activate

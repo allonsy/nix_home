@@ -1,7 +1,7 @@
 pkgs: with pkgs; [
   awscli2
   dapr-cli
-  jdk
+  gh
   k9s
   kubectl
   poppler-utils
