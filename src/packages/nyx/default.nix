@@ -3,6 +3,7 @@
   lib,
   fonts,
   hyprland,
+  graphics,
   init,
   jujutsu,
   kernel,
@@ -26,6 +27,7 @@ let
     alsa-utils
     bash
     bat
+    cacert
     coreutils
     devenv
     dhcpcd
@@ -36,12 +38,15 @@ let
     git
     gnome-keyring
     google-chrome
+    graphics
     hyprland
     init
     jujutsu
     kernel
     kitty
     kmod
+    libcap.lib
+    libvdpau-va-gl
     linker
     locale
     nix
@@ -58,6 +63,7 @@ let
     seatd
     (lib.hiPrio setup)
     ssh
+    steam
     strace
     systemd
     sudo
@@ -66,6 +72,7 @@ let
     wpa_supplicant
     xdg-utils
     zed
+    zoom-us
     zsh
   ];
 in

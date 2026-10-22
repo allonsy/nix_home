@@ -1,0 +1,11 @@
+[Unit]
+Description=Link graphics driver directories into /run
+Wants=local-fs.target
+After=systemd-remount-fs.service
+Before=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/ln -sfn /system/current/share/opengl-driver /run/opengl-driver
+ExecStart=/bin/ln -sfn /system/current/share/opengl-driver-32 /run/opengl-driver-32
