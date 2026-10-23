@@ -42,6 +42,7 @@ let
     hyprland
     init
     jujutsu
+    jq
     kernel
     kitty
     kmod
