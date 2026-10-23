@@ -34,4 +34,10 @@
     "etc/config/nix/nix.conf"
     "@HOME@/.config/nix/nix.conf"
   ]
+
+  # herdr
+  [
+    "etc/config/herdr/config.toml"
+    "@HOME@/.config/herdr/config.toml"
+  ]
 ]

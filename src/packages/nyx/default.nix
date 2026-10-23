@@ -4,6 +4,7 @@
   fonts,
   hyprland,
   graphics,
+  herdr,
   init,
   jujutsu,
   kernel,
@@ -39,6 +40,7 @@ let
     gnome-keyring
     google-chrome
     graphics
+    herdr
     hyprland
     init
     jujutsu
