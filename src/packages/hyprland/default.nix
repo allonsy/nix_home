@@ -29,6 +29,7 @@ stdenv.mkDerivation {
     mkdir -p $out/bin
     mkdir -p $out/etc/config/hypr
     mkdir -p $out/etc/config/waybar
+    mkdir -p $out/lib
 
     cp ${pkgs.hyprland}/bin/hyprland $out/bin/
     cp ${pkgs.hyprland}/bin/hyprctl $out/bin/
@@ -37,6 +38,9 @@ stdenv.mkDerivation {
     cp ${pkgs.waybar}/bin/waybar $out/bin/
     cp ${pkgs.swaybg}/bin/swaybg $out/bin/
     cp ${hyprland_start_script} $out/bin/start_hyprland
+    cp -r ${pkgs.libxcb}/lib/* $out/lib
+    cp -r ${pkgs.wayland}/lib/* $out/lib
+    cp -r ${pkgs.libxkbcommon}/lib/* $out/lib
 
     chmod +x $out/bin/start_hyprland
 

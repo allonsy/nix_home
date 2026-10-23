@@ -30,6 +30,7 @@ let
     bat
     cacert
     coreutils
+    curl
     devenv
     dhcpcd
     dbus
@@ -61,6 +62,7 @@ let
     polkit
     profileManager
     rofi
+    ripgrep
     rustup
     scripts
     seatd

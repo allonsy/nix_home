@@ -40,4 +40,10 @@
     "etc/config/herdr/config.toml"
     "@HOME@/.config/herdr/config.toml"
   ]
+
+  # nvim
+  [
+    "etc/config/nvim"
+    "@HOME@/.config/nvim"
+  ]
 ]
