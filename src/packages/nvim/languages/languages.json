@@ -1,37 +1,44 @@
 [
   {
-    "name": "rust",
-    "repo": "https://github.com/tree-sitter/tree-sitter-rust.git",
-    "commit": "77a3747266f4d621d0757825e6b11edcbf991ca5",
-    "lspPackageName": "rust-analyzer",
-    "cmd": [
-      "rust-analyzer"
-    ],
+    "name": "bash",
+    "repo": "https://github.com/tree-sitter/tree-sitter-bash.git",
+    "commit": "a06c2e4415e9bc0346c6b86d401879ffb44058f7",
     "filetypes": [
-      "rust"
-    ],
-    "rootMarkers": [
-      "Cargo.toml",
-      "Cargo.lock"
+      "bash",
+      "sh",
+      "zsh"
+    ]
+  },
+  {
+    "name": "json",
+    "repo": "https://github.com/tree-sitter/tree-sitter-json.git",
+    "commit": "254c42a6476413b776221e03982ac8ae159eeb72",
+    "filetypes": [
+      "json"
     ]
   },
   {
     "name": "python",
     "repo": "https://github.com/tree-sitter/tree-sitter-python.git",
     "commit": "26855eabccb19c6abf499fbc5b8dc7cc9ab8bc64",
-    "lspPackageName": "ruff",
-    "cmd": [
-      "ruff",
-      "server"
-    ],
     "filetypes": [
       "python"
-    ],
-    "rootMarkers": [
-      "pyproject.toml",
-      "setup.py",
-      "ruff.toml",
-      ".git"
+    ]
+  },
+  {
+    "name": "rust",
+    "repo": "https://github.com/tree-sitter/tree-sitter-rust.git",
+    "commit": "77a3747266f4d621d0757825e6b11edcbf991ca5",
+    "filetypes": [
+      "rust"
+    ]
+  },
+  {
+    "name": "yaml",
+    "repo": "https://github.com/tree-sitter-grammars/tree-sitter-yaml.git",
+    "commit": "a1c4812a73ec5e089de8e441fdea3a921e8d5079",
+    "filetypes": [
+      "yaml"
     ]
   }
 ]

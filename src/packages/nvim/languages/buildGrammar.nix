@@ -4,7 +4,9 @@ inputs@{
   name,
   repo,
   commit,
+  file_types ? [ ],
   lspPackageName ? null,
+  vars,
   ...
 }:
 let
@@ -13,7 +15,13 @@ let
     url = repo;
     rev = commit;
   };
-  lspConfig = if lspPackageName != null then (import ./lspConf.nix) inputs else "";
+  queriesDir = ./queries;
+  quote = s: "'${s}'";
+  quoted_file_types = map quote file_types;
+  separated_file_types = builtins.concatStringSep ", " quoted_file_types;
+  register_string = "vim.treesitter.language.register(${quote name}, { ${separated_file_types} }))";
+  file_type_string = if file_types == [ ] then "" else register_string;
+  conf_dir = "${vars.config_dir}/nvim";
 in
 stdenv.mkDerivation {
   name = "tree-sitter-${name}";
@@ -21,25 +29,19 @@ stdenv.mkDerivation {
   dontUnpack = true;
 
   installPhase = ''
-    mkdir -p $TMP/.cache
-    export XDG_CACHE_HOME=$TMP/.cache
+    mkdir -p $TMP/.tscache
+    export XDG_CACHE_HOME=$TMP/.tscache
 
-    mkdir -p $out/bin
-    mkdir -p $out/parser
-    mkdir -p $out/queries
-    mkdir -p $out/lsp
+    mkdir -p ${conf_dir}/parser
+    mkdir -p ${conf_dir}/queries
+
+    if [ -n "$(ls -A ${queriesDir}/${name})" ]; then
+        cp -r ${queriesDir}/${name} ${conf_dir}/queries/
+    fi
+
+    echo "${file_type_string}" > ${conf_dir}/register_${name}.lua
 
     cd ${grammarRepo}
-    ${pkgs.tree-sitter}/bin/tree-sitter build -o $out/parser/${name}.so
-
-    cat << EOF >> $out/lsp/${name}.lua
-    -- LSP configuration for ${name}
-    ${lspConfig}
-
-    EOF
-
-    echo "vim.lsp.enable('${name}')" >> $out/conf.lua
-
-    ${if lspPackageName != null then "cp -r ${pkgs.${lspPackageName}}/bin/* $out/bin/" else ""}
+    ${pkgs.tree-sitter}/bin/tree-sitter build -o ${conf_dir}/parser/${name}.so
   '';
 }

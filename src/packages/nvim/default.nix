@@ -1,36 +1,29 @@
 inputs@{
   pkgs,
   stdenv,
+  vars,
   ...
 }:
 let
-  rsync = "${pkgs.rsync}/bin/rsync";
   languages = (import ./languages) inputs;
   plugins = (import ./plugins) inputs;
+  src_dir = ./src;
 in
-stdenv.mkDerivation {
+pkgs.symlinkJoin {
   name = "nvim";
-  src = ./src;
+  paths = [ languages ];
 
-  installPhase = ''
-    export NVIM_CONFIG_DIR=$out/usr/config/nvim
+  postBuild = ''
+    export NVIM_CONFIG_DIR=${vars.config_dir}/nvim
     mkdir -p $NVIM_CONFIG_DIR
-    mkdir -p $NVIM_CONFIG_DIR/parser/
-    mkdir -p $NVIM_CONFIG_DIR/queries/
     mkdir -p $NVIM_CONFIG_DIR/plugins/
-    mkdir -p $NVIM_CONFIG_DIR/lsp/
 
     mkdir -p $out/bin
 
-    cp -r * $NVIM_CONFIG_DIR
+    cp -r ${src_dir}/* $NVIM_CONFIG_DIR
 
     cp ${pkgs.neovim}/bin/nvim $out/bin/nvim
     ln -s $out/bin/nvim $out/bin/vim
-
-    cp -r ${languages}/parser/* $NVIM_CONFIG_DIR/parser
-    ${rsync} ${languages}/queries/ $NVIM_CONFIG_DIR/queries
-    cp ${languages}/lsp/* $NVIM_CONFIG_DIR/lsp
-    cat ${languages}/conf.lua >> $NVIM_CONFIG_DIR/lua/lsp-conf.lua
 
     cp -r ${plugins}/plugins/* $NVIM_CONFIG_DIR/plugins
 

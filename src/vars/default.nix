@@ -10,7 +10,7 @@ in
 {
   username = username;
   home_dir = home_dir;
-  config_dir = "/etc/config";
+  config_dir = "$out/etc/config";
   FRAMEWORK_BUILD_DIR = "${home_dir}/nix";
   FRAMEWORK_PROFILE_DIR = "/system";
 
