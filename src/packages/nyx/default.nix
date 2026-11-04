@@ -29,6 +29,7 @@ let
     bash
     bat
     cacert
+    calibre
     coreutils
     curl
     devenv
